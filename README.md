@@ -1,3 +1,10 @@
+[![CI](https://github.com/mikeholownych/unbound-dns-setup/actions/workflows/lint.yml/badge.svg)](https://github.com/mikeholownych/unbound-dns-setup/actions/workflows/lint.yml)
+[![Release](https://github.com/mikeholownych/unbound-dns-setup/actions/workflows/release.yml/badge.svg)](https://github.com/mikeholownych/unbound-dns-setup/actions/workflows/release.yml)
+[![Version](https://img.shields.io/github/v/tag/mikeholownych/unbound-dns-setup?label=version)](https://github.com/mikeholownych/unbound-dns-setup/releases)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Ansible](https://img.shields.io/badge/ansible-tested-blue.svg)](https://www.ansible.com)
+[![Build](https://img.shields.io/github/languages/top/mikeholownych/unbound-dns-setup)](https://github.com/mikeholownych/unbound-dns-setup)
+
 # 🧠 Unbound DNS + Monitoring + Security – Production-Grade IaC Playbook
 
 This repository provisions a full-stack DNS resolver and monitoring solution using Unbound, Pi-hole, Prometheus, Grafana, Loki, and Active Directory authentication. It includes hardened security with Fail2Ban, firewall rules, and alerting via Alertmanager.
