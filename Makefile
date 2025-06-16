@@ -2,7 +2,7 @@
 
 # Lint all Ansible files
 lint:
-	ansible-lint playbook.yml
+	ansible-lint playbook.yml --vault-password-file .vault_pass.txt
 
 # Encrypt vault file
 encrypt:

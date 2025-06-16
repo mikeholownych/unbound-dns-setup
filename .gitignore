@@ -14,6 +14,7 @@ vault.yml
 vault_*.yml
 *.vault
 secrets/
+.vault_pass.txt
 
 # Roles and playbooks
 roles/**/files/
