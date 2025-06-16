@@ -4,3 +4,4 @@
     cis-cat.sh -b /opt/cis-benchmark -p /tmp/cis-scan-report.xml
   args:
     executable: /bin/bash
+  changed_when: false

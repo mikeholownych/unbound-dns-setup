@@ -10,7 +10,7 @@
 - name: Enable and start stubby service
   ansible.builtin.service:
     name: stubby
-    enabled: yes
+    enabled: true
     state: restarted
 
 - name: Configure Unbound to forward to Stubby

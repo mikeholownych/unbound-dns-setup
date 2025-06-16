@@ -1,6 +1,6 @@
 ---
 - name: Send HTML report via mail
-  ansible.builtin.mail:
+  community.general.mail:
     host: "{{ smtp_server }}"
     port: 587
     username: "{{ smtp_user }}"

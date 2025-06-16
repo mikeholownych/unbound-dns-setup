@@ -1,6 +1,12 @@
----
 - name: Upload backup to S3 bucket
-  ansible.builtin.shell: |
-    bash /usr/local/bin/s3-upload.sh "{{ s3_bucket }}" "{{ s3_backup_file }}"
-  args:
-    executable: /bin/bash
+  amazon.aws.s3_object:
+    bucket: "{{ s3_bucket }}"
+    object: "{{ s3_backup_file | basename }}"
+    src: "{{ s3_backup_file }}"
+    mode: put
+    overwrite: true
+  register: s3_upload_result
+
+- name: Show upload result
+  ansible.builtin.debug:
+    msg: "S3 upload result: {{ s3_upload_result }}"

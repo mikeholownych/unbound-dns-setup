@@ -3,3 +3,4 @@
   ansible.builtin.shell: bash /usr/local/bin/cache-analysis.sh /tmp/unbound_cache_dump.txt
   args:
     executable: /bin/bash
+  changed_when: false

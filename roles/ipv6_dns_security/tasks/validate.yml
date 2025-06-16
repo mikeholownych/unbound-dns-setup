@@ -3,3 +3,4 @@
   ansible.builtin.shell: unbound-checkconf
   args:
     executable: /bin/bash
+  changed_when: false

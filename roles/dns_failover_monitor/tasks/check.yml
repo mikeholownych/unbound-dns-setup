@@ -2,7 +2,8 @@
 - name: Check upstream DNS health
   ansible.builtin.shell: "dig +time=2 +tries=1 @8.8.8.8 google.com | grep -q 'ANSWER'"
   register: dns_check_result
-  ignore_errors: yes
+  ignore_errors: true
+  changed_when: false
 
 - name: Set failover flag if DNS is down
   ansible.builtin.set_fact:

@@ -3,10 +3,10 @@
   ansible.builtin.apt:
     name: prometheus-blackbox-exporter
     state: present
-    update_cache: yes
+    update_cache: true
 
 - name: Ensure Blackbox Exporter is enabled and running
   ansible.builtin.service:
     name: prometheus-blackbox-exporter
-    enabled: yes
+    enabled: true
     state: started

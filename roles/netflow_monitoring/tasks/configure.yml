@@ -8,6 +8,6 @@
 - name: Enable and start nfcapd
   ansible.builtin.systemd:
     name: nfcapd
-    enabled: yes
+    enabled: true
     state: started
     daemon_reload: true

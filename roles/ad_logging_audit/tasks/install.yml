@@ -9,5 +9,5 @@
 - name: Enable and start auditd
   ansible.builtin.service:
     name: auditd
-    enabled: yes
+    enabled: true
     state: started

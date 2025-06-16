@@ -13,10 +13,10 @@
 
 - name: Reload systemd to register uptime monitor
   ansible.builtin.systemd:
-    daemon_reload: yes
+    daemon_reload: true
 
 - name: Start uptime monitor service
   ansible.builtin.service:
     name: uptime-monitor
-    enabled: yes
+    enabled: true
     state: started

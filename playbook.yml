@@ -1,13 +1,13 @@
 ---
 - name: DNSStack - Full Infrastructure Deployment (v1.1.0)
   hosts: all
-  become: yes
+  become: true
   vars_files:
     - group_vars/all/vault.yml
 
   pre_tasks:
     - name: Verify prerequisites and roles
-      import_role:
+      ansible.builtin.import_role:
         name: verify
 
   roles:
