@@ -1,0 +1,58 @@
+# Ansible
+*.retry
+*.log
+*.pyc
+*.pyo
+__pycache__/
+inventory.yaml
+inventory.ini~
+.vagrant/
+*.swp
+
+# Vault files (encrypted)
+vault.yml
+vault_*.yml
+*.vault
+secrets/
+
+# Roles and playbooks
+roles/**/files/
+roles/**/tmp/
+roles/**/logs/
+
+# Environment / Python
+.env
+.venv/
+env/
+venv/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# VSCode / IDEs
+.vscode/
+.idea/
+*.code-workspace
+
+# GitHub Actions
+.github/workflows/.DS_Store
+.DS_Store
+
+# CI artifacts
+dist/
+build/
+tmp/
+*.tar.gz
+*.zip
+
+# Docs
+docs/assets/img/banner.png
+docs/assets/img/favicon.ico
+
+# Ignore OS-specific
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+# Ignore generated files
+CHANGELOG.md
+release_notes.md
