@@ -1,2 +1,36 @@
-- name: Nginx_proxy main task
-  ansible.builtin.debug: msg='Running nginx_proxy tasks'
+- name: Ensure nginx config directory exists
+  ansible.builtin.file:
+    path: /etc/nginx/conf.d
+    state: directory
+    mode: '0755'
+  become: true
+
+- name: Deploy proxy configuration
+  ansible.builtin.template:
+    src: proxy.conf.j2
+    dest: /etc/nginx/conf.d/proxy.conf
+    mode: '0644'
+  become: true
+  notify: Restart nginx-proxy
+
+- name: Ensure nginx-proxy container is running with mounted config
+  community.docker.docker_container:
+    name: nginx-proxy
+    image: jwilder/nginx-proxy:alpine
+    state: started
+    restart_policy: unless-stopped
+    published_ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - /etc/nginx/conf.d:/etc/nginx/conf.d:ro
+      - /etc/nginx/certs
+      - /etc/nginx/vhost.d
+    env:
+      ENABLE_IPV6: "true"
+  become: true
+
+- name: Display NGINX Proxy container status
+  ansible.builtin.debug:
+    msg: "NGINX reverse proxy running on ports 80 and 443 with custom proxy.conf"

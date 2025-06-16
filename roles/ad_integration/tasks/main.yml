@@ -1,2 +1,48 @@
-- name: Ad_integration main task
-  ansible.builtin.debug: msg='Running ad_integration tasks'
+---
+- name: Install Required AD Packages
+  ansible.builtin.package:
+    name:
+      - realmd
+      - sssd
+      - oddjob
+      - oddjob-mkhomedir
+      - adcli
+      - samba-common
+      - samba-common-tools
+      - krb5-workstation
+    state: present
+
+- name: Join the AD Domain
+  ansible.builtin.command:
+    cmd: echo '{{ ad_password }}' | realm join --user={{ ad_user }} {{ ad_domain }}
+  become: true
+  no_log: true
+  register: join_output
+  changed_when: "'already joined' not in join_output.stdout"
+
+- name: Deploy SSSD Configuration
+  ansible.builtin.template:
+    src: sssd.conf.j2
+    dest: /etc/sssd/sssd.conf
+    owner: root
+    group: root
+    mode: '0600'
+  notify: Restart SSSD
+
+- name: Enable and Start SSSD Service
+  ansible.builtin.service:
+    name: sssd
+    state: started
+    enabled: true
+
+- name: Allow AD Admins to Use Sudo
+  ansible.builtin.lineinfile:
+    path: /etc/sudoers.d/domain_admins
+    create: true
+    mode: '0440'
+    line: '%{{ ad_admin_group }} ALL=(ALL) ALL'
+    validate: '/usr/sbin/visudo -cf %s'
+
+- name: Print Domain Join Status
+  ansible.builtin.debug:
+    msg: "✅ AD domain join complete for {{ ad_domain }}"

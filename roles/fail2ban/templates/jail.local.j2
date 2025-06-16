@@ -1,0 +1,15 @@
+[DEFAULT]
+ignoreip = 127.0.0.1/8 ::1 {{ ansible_default_ipv4.address }}
+bantime  = 3600
+findtime  = 600
+maxretry = 5
+backend = systemd
+usedns = warn
+logtarget = /var/log/fail2ban.log
+
+[sshd]
+enabled = true
+port    = ssh
+filter  = sshd
+logpath = /var/log/auth.log
+maxretry = 3

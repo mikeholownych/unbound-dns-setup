@@ -1,2 +1,54 @@
-- name: Firewall main task
-  ansible.builtin.debug: msg='Running firewall tasks'
+---
+- name: Install UFW
+  ansible.builtin.package:
+    name: ufw
+    state: present
+
+- name: Allow SSH
+  community.general.ufw:
+    rule: allow
+    name: OpenSSH
+
+- name: Allow DNS (TCP and UDP)
+  community.general.ufw:
+    rule: allow
+    port: 53
+    proto: "{{ item }}"
+  loop:
+    - tcp
+    - udp
+
+- name: Allow Web Interfaces (HTTP, HTTPS, Prometheus, Grafana)
+  community.general.ufw:
+    rule: allow
+    port: "{{ item }}"
+  loop:
+    - 80
+    - 443
+    - 9090
+    - 3000
+
+- name: Allow Internal Access from RFC1918 IP Ranges
+  community.general.ufw:
+    rule: allow
+    from_ip: "{{ item }}"
+  loop:
+    - "10.0.0.0/8"
+    - "172.16.0.0/12"
+    - "192.168.0.0/16"
+
+- name: Set Default Incoming Policy to Deny and Enable UFW
+  community.general.ufw:
+    state: enabled
+    policy: deny
+    direction: incoming
+  notify: reload firewall
+
+- name: Print current firewall status
+  ansible.builtin.command: ufw status verbose
+  register: ufw_status
+  changed_when: false
+
+- name: Show firewall summary
+  ansible.builtin.debug:
+    msg: "{{ ufw_status.stdout_lines }}"

@@ -1,0 +1,9 @@
+- name: Verify Unbound service is running
+  ansible.builtin.service_facts:
+
+- name: Assert Unbound is active
+  ansible.builtin.assert:
+    that:
+      - ansible_facts.services['unbound.service'].state == 'running'
+    fail_msg: "❌ Unbound is not running"
+    success_msg: "✅ Unbound is running"

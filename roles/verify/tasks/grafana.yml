@@ -1,0 +1,12 @@
+- name: Check Grafana web UI is available
+  ansible.builtin.uri:
+    url: http://localhost:3000/login
+    return_content: true
+  register: grafana_status
+
+- name: Assert Grafana login page loaded
+  ansible.builtin.assert:
+    that:
+      - grafana_status.status == 200
+    fail_msg: "❌ Grafana web UI not reachable"
+    success_msg: "✅ Grafana web UI is reachable"

@@ -1,2 +1,31 @@
-- name: Backups main task
-  ansible.builtin.debug: msg='Running backups tasks'
+---
+- name: Ensure Backup Directory Exists
+  ansible.builtin.file:
+    path: /opt/backups
+    state: directory
+    owner: root
+    group: root
+    mode: '0750'
+
+- name: Install Required Packages
+  ansible.builtin.package:
+    name: rsync
+    state: present
+
+- name: Deploy Backup Script
+  ansible.builtin.template:
+    src: backup.sh.j2
+    dest: /usr/local/bin/backup.sh
+    mode: '0750'
+
+- name: Create Cron Job for Nightly Backup
+  ansible.builtin.cron:
+    name: "Nightly System Backup"
+    job: "/usr/local/bin/backup.sh"
+    minute: "0"
+    hour: "2"
+    user: root
+
+- name: Print backup setup confirmation
+  ansible.builtin.debug:
+    msg: "✅ Backup system initialized and scheduled at 02:00 daily"

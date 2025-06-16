@@ -1,0 +1,75 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "type": "dashboard",
+        "name": "Annotations & Alerts"
+      }
+    ]
+  },
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "id": null,
+  "iteration": 1622562342549,
+  "links": [],
+  "panels": [
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 0
+      },
+      "id": 1,
+      "title": "DNS Query Count",
+      "type": "timeseries",
+      "targets": [
+        {
+          "expr": "sum(rate(dns_queries_total[1m]))",
+          "legendFormat": "Total Queries",
+          "refId": "A"
+        }
+      ]
+    },
+    {
+      "datasource": null,
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 12,
+        "y": 0
+      },
+      "id": 2,
+      "title": "Blocked DNS Requests",
+      "type": "timeseries",
+      "targets": [
+        {
+          "expr": "sum(rate(dns_blocked_queries_total[1m]))",
+          "legendFormat": "Blocked Queries",
+          "refId": "B"
+        }
+      ]
+    }
+  ],
+  "schemaVersion": 27,
+  "style": "dark",
+  "tags": ["dns", "monitoring"],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-1h",
+    "to": "now"
+  },
+  "timezone": "",
+  "title": "{{ grafana_dashboard_title }}",
+  "uid": "{{ grafana_dashboard_uid }}",
+  "version": 1
+}

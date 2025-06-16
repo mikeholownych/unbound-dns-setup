@@ -1,0 +1,12 @@
+- name: Query Prometheus health endpoint
+  ansible.builtin.uri:
+    url: http://localhost:9090/-/healthy
+    return_content: true
+  register: prometheus_health
+
+- name: Assert Prometheus is healthy
+  ansible.builtin.assert:
+    that:
+      - "'Prometheus is Healthy' in prometheus_health.content or prometheus_health.status == 200"
+    fail_msg: "❌ Prometheus health check failed"
+    success_msg: "✅ Prometheus is healthy"

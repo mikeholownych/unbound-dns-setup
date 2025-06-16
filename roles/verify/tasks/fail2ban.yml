@@ -1,0 +1,19 @@
+---
+- name: Check Fail2Ban Service Status
+  ansible.builtin.command: fail2ban-client status
+  register: fail2ban_status
+  changed_when: false
+
+- name: Output Fail2Ban Status
+  ansible.builtin.debug:
+    msg: "{{ fail2ban_status.stdout_lines }}"
+
+- name: Check Fail2Ban SSHD Jail Status
+  ansible.builtin.command: fail2ban-client status sshd
+  register: sshd_jail_status
+  changed_when: false
+  failed_when: "'sshd' not in sshd_jail_status.stdout"
+
+- name: Output SSHD Jail Details
+  ansible.builtin.debug:
+    msg: "{{ sshd_jail_status.stdout_lines }}"

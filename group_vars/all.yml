@@ -1,0 +1,13 @@
+ad_domain: adroot.holownych.com
+ad_realm: adroot.holownych.com
+ad_user: "{{ vault_ad_user }}"
+ad_password: "{{ vault_ad_password }}"
+ad_admin_group: "Domain Admins"
+
+unbound_ip_primary: 192.168.1.10
+unbound_ip_secondary: 192.168.1.11
+pihole_ip: 192.168.1.12
+ad_server_ip: 192.168.1.104
+
+threat_feeds:
+  - malicious.txt

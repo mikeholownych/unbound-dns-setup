@@ -1,2 +1,41 @@
-- name: Unbound main task
-  ansible.builtin.debug: msg='Running unbound tasks'
+---
+- name: Ensure Unbound configuration directories exist
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    mode: '0755'
+  loop:
+    - /etc/unbound
+    - /etc/unbound/threatfeeds
+  become: true
+
+- name: Copy Unbound root hints
+  ansible.builtin.get_url:
+    url: https://www.internic.net/domain/named.cache
+    dest: /etc/unbound/root.hints
+    mode: '0644'
+  become: true
+
+- name: Deploy Unbound configuration
+  ansible.builtin.template:
+    src: unbound.conf.j2
+    dest: /etc/unbound/unbound.conf
+    mode: '0644'
+  become: true
+  notify: Restart unbound
+
+- name: Start Unbound container
+  community.docker.docker_container:
+    name: unbound
+    image: mvance/unbound:latest
+    state: started
+    restart_policy: unless-stopped
+    restart: true
+    published_ports:
+      - "53:53/udp"
+      - "53:53/tcp"
+    volumes:
+      - /etc/unbound/unbound.conf:/opt/unbound/etc/unbound/unbound.conf:ro
+      - /etc/unbound/threatfeeds:/opt/unbound/etc/unbound/threatfeeds:ro
+      - /etc/unbound/root.hints:/opt/unbound/etc/unbound/root.hints:ro
+  become: true

@@ -1,0 +1,7 @@
+---
+- name: Restart unbound
+  community.docker.docker_container:
+    name: unbound
+    state: started
+    restart: true
+  become: true

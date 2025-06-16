@@ -1,2 +1,30 @@
-- name: Grafana main task
-  ansible.builtin.debug: msg='Running grafana tasks'
+- name: Create provisioning directory structure
+  ansible.builtin.file:
+    path: "/etc/grafana/provisioning/{{ item }}"
+    state: directory
+    mode: '0755'
+  loop:
+    - dashboards
+    - datasources
+  become: true
+
+- name: Copy dashboard provisioning config
+  ansible.builtin.copy:
+    src: "provisioning/dashboards.yml"
+    dest: "/etc/grafana/provisioning/dashboards/dashboards.yml"
+    mode: '0644'
+  become: true
+
+- name: Copy datasource provisioning config
+  ansible.builtin.copy:
+    src: "provisioning/datasources.yml"
+    dest: "/etc/grafana/provisioning/datasources/datasources.yml"
+    mode: '0644'
+  become: true
+
+- name: Copy default dashboard JSON
+  ansible.builtin.copy:
+    src: "dashboards/default.json"
+    dest: "/etc/grafana/provisioning/dashboards/default.json"
+    mode: '0644'
+  become: true

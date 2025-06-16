@@ -1,2 +1,38 @@
-- name: Dns_logging main task
-  ansible.builtin.debug: msg='Running dns_logging tasks'
+---
+- name: Ensure Log Directory Exists
+  ansible.builtin.file:
+    path: /var/log/unbound
+    state: directory
+    owner: unbound
+    group: unbound
+    mode: '0750'
+
+- name: Configure Unbound for DNS Logging
+  ansible.builtin.lineinfile:
+    path: /etc/unbound/unbound.conf
+    regexp: '^\s*log-queries:'
+    line: '    log-queries: yes'
+    insertafter: '^server:'
+    state: present
+  notify: Restart Unbound
+
+- name: Configure Unbound to Log Replies
+  ansible.builtin.lineinfile:
+    path: /etc/unbound/unbound.conf
+    regexp: '^\s*log-replies:'
+    line: '    log-replies: yes'
+    insertafter: '^server:'
+    state: present
+  notify: Restart Unbound
+
+- name: Set Log Rotation for Unbound Logs
+  ansible.builtin.copy:
+    src: unbound-logrotate.conf
+    dest: /etc/logrotate.d/unbound
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: Print DNS logging setup message
+  ansible.builtin.debug:
+    msg: "✅ DNS query logging enabled for Unbound"

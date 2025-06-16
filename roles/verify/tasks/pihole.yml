@@ -1,0 +1,11 @@
+- name: Check Pi-hole container is running
+  community.docker.docker_container_info:
+    name: pihole
+  register: pihole_status
+
+- name: Assert Pi-hole container is up
+  ansible.builtin.assert:
+    that:
+      - pihole_status.container.State.Status == 'running'
+    fail_msg: "❌ Pi-hole container is not running"
+    success_msg: "✅ Pi-hole container is running"

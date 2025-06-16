@@ -1,2 +1,29 @@
-- name: Threatfeeds main task
-  ansible.builtin.debug: msg='Running threatfeeds tasks'
+---
+- name: Ensure threat feed sync script directory exists
+  ansible.builtin.file:
+    path: /opt/threatfeeds
+    state: directory
+    mode: '0755'
+  become: true
+
+- name: Copy threat feed sync script
+  ansible.builtin.copy:
+    src: sync-threatfeeds.sh
+    dest: /opt/threatfeeds/sync-threatfeeds.sh
+    mode: '0750'
+  become: true
+
+- name: Run threat feed sync script
+  ansible.builtin.command:
+    cmd: /opt/threatfeeds/sync-threatfeeds.sh
+  changed_when: false
+  notify: Reload unbound
+  become: true
+
+- name: Add cron job to sync feeds daily
+  ansible.builtin.cron:
+    name: "Daily Threat Feed Sync"
+    minute: "0"
+    hour: "2"
+    job: "/opt/threatfeeds/sync-threatfeeds.sh"
+    user: root

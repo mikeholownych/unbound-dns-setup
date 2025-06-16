@@ -1,2 +1,33 @@
-- name: Alertmanager main task
-  ansible.builtin.debug: msg='Running alertmanager tasks'
+---
+- name: Create Alertmanager Config Directory
+  ansible.builtin.file:
+    path: /etc/alertmanager
+    state: directory
+    owner: root
+    group: root
+    mode: '0755'
+
+- name: Deploy Alertmanager Configuration
+  ansible.builtin.template:
+    src: alertmanager.yml.j2
+    dest: /etc/alertmanager/alertmanager.yml
+    owner: root
+    group: root
+    mode: '0644'
+  notify: Restart Alertmanager
+
+- name: Run Alertmanager Container
+  community.docker.docker_container:
+    name: alertmanager
+    image: prom/alertmanager:latest
+    restart_policy: always
+    ports:
+      - "9093:9093"
+    volumes:
+      - /etc/alertmanager:/etc/alertmanager
+    command: "--config.file=/etc/alertmanager/alertmanager.yml"
+    state: started
+
+- name: Print Alertmanager deployment message
+  ansible.builtin.debug:
+    msg: "✅ Alertmanager deployed and running on port 9093"
