@@ -1,58 +1,52 @@
-# 🧠 Unbound DNS + Monitoring + Security – Production-Grade IaC Playbook
+# 🧠 Unbound DNS Resolver – Secure, Observable, Production-Ready Stack
 
-This repository provisions a full-stack DNS resolver and monitoring solution using Unbound, Pi-hole, Prometheus, Grafana, Loki, and Active Directory authentication. It includes hardened security with Fail2Ban, firewall rules, and alerting via Alertmanager.
+![CI](https://github.com/mikeholownych/unbound-dns-setup/actions/workflows/lint.yml/badge.svg)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Ansible](https://img.shields.io/badge/ansible-tested-blue.svg)](https://www.ansible.com)
+[![Build](https://img.shields.io/github/languages/top/mikeholownych/unbound-dns-setup)](https://github.com/mikeholownych/unbound-dns-setup)
+
+---
+
+This project sets up a **redundant DNS resolver stack** using Unbound, Pi-hole, and Prometheus, built with Ansible and deployed in Proxmox.  
+It’s hardened, monitored, and integrates Active Directory, custom ACLs, zone transfers, and full observability via Grafana.
+
+> ✅ Built for homelab, SMB, and ethical AI/IT compliance labs.
+
+---
 
 ## 🔧 Features
 
-- 🔐 Unbound + Pi-hole DNS resolution (internal + external)
-- 📊 Grafana dashboards for DNS, system, and log observability
-- 📈 Prometheus metrics (Unbound, Pi-hole, system)
-- 🔔 Alertmanager with email + Slack integration
-- 🛡️ Integrated firewall ACLs and Fail2Ban for hardening
-- 🪵 Centralized logging with Loki + Promtail
-- 👤 Active Directory authentication (Windows Server 2019)
-- 🧪 CI/CD automation with GitHub Actions
-- 🔄 Vault-safe secrets and full infrastructure-as-code setup
+- ✅ **Unbound DNS resolvers** (primary + secondary)
+- ✅ **Pi-hole** for ad-blocking and override zones
+- ✅ **Windows AD integration** (`adroot.holownych.com`)
+- ✅ **DNS metrics** via Prometheus + Grafana
+- ✅ **Threat feeds** auto-sync and integrated with Unbound
+- ✅ **Ansible Vault** secured secrets
+- ✅ **Full CI/CD** via GitHub Actions (lint, PR gating, tagging, release)
+- ✅ **Zone transfer** support between resolvers
+- ✅ **Firewall & Fail2Ban** hardened defaults
+- ✅ **Self-documenting infrastructure**
 
-## 📦 Setup
+---
 
-```bash
-ansible-playbook -i inventory.ini playbook.yml --ask-vault-pass
-```
-
-## 🗂️ Structure
-
-- `playbook.yml` – Orchestration entry point
-- `group_vars/all/vault.yml` – Encrypted credentials + tokens
-- `roles/*` – Modular Ansible roles
-- `.github/workflows/` – CI pipelines for lint, label enforcement, release
-- `scripts/release.sh` – Version bumping + changelog update
-
-## ✅ Inventory Example
-
-```ini
-[dns_nodes]
-192.168.1.10
-192.168.1.11
-```
-
-## 🔒 Vault Variables Example
-
-```yaml
-smtp_user: "monitor@example.com"
-smtp_password: "vault-encrypted-password"
-alert_email_to: "admin@example.com"
-loki_host: "192.168.1.100"
-```
-
-## 🧪 Run Lint + CI
-
-Push with `release` label or tag manually:
+## 🗂️ Repo Structure
 
 ```bash
-git tag v1.0.0 && git push origin v1.0.0
-```
-
-## 📄 License
-
-MIT
+📁 roles/
+  ├── unbound/           # Core resolver config
+  ├── pihole/            # Docker Pi-hole + static entries
+  ├── ad_integration/    # Auth + Realm join
+  ├── threatfeeds/       # Blocklists synced regularly
+  ├── alertmanager/      # Notifications + Grafana alerts
+  ├── prometheus/        # Exporters, dnsmasq + unbound
+  ├── grafana/           # Dashboards as code
+  ├── nginx_proxy/       # TLS reverse proxy
+  ├── firewall/          # UFW + iptables
+  ├── backups/           # DNS & container backup hooks
+  ├── verify/            # Post-deploy checks
+📄 playbook.yml          # Master playbook
+📄 inventory.ini         # Your target inventory
+📁 .github/workflows/    # Lint, release, tagging, PR checks
+📄 CHANGELOG.md
+📄 Makefile              # Easy dev/test/CI triggers
+📁 docs/                 # GitHub Pages documentation
