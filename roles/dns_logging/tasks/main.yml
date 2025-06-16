@@ -1,0 +1,2 @@
+- name: dns_logging main task
+  debug: msg='Running dns_logging tasks'

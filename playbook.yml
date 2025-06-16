@@ -1,0 +1,16 @@
+- name: Provision DNS Infrastructure
+  hosts: dns_nodes
+  become: true
+  roles:
+    - ad_integration
+    - alertmanager
+    - backups
+    - dns_logging
+    - fail2ban
+    - prometheus
+    - grafana
+    - pihole
+    - firewall
+    - nginx_proxy
+    - unbound
+    - threatfeeds

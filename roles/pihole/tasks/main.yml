@@ -1,0 +1,2 @@
+- name: pihole main task
+  debug: msg='Running pihole tasks'

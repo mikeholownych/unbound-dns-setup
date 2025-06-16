@@ -1,0 +1,4 @@
+name: Auto Bump Version
+on:
+  pull_request:
+    types: [closed]
