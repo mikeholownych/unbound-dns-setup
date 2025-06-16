@@ -1,2 +1,2 @@
-- name: fail2ban main task
-  debug: msg='Running fail2ban tasks'
+- name: Fail2ban main task
+  ansible.builtin.debug: msg='Running fail2ban tasks'

@@ -1,2 +1,2 @@
-- name: prometheus main task
-  debug: msg='Running prometheus tasks'
+- name: Prometheus main task
+  ansible.builtin.debug: msg='Running prometheus tasks'

@@ -1,2 +1,2 @@
-- name: dns_logging main task
-  debug: msg='Running dns_logging tasks'
+- name: Dns_logging main task
+  ansible.builtin.debug: msg='Running dns_logging tasks'

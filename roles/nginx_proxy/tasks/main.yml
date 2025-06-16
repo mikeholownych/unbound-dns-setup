@@ -1,2 +1,2 @@
-- name: nginx_proxy main task
-  debug: msg='Running nginx_proxy tasks'
+- name: Nginx_proxy main task
+  ansible.builtin.debug: msg='Running nginx_proxy tasks'

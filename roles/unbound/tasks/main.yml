@@ -1,2 +1,2 @@
-- name: unbound main task
-  debug: msg='Running unbound tasks'
+- name: Unbound main task
+  ansible.builtin.debug: msg='Running unbound tasks'

@@ -1,2 +1,2 @@
-- name: threatfeeds main task
-  debug: msg='Running threatfeeds tasks'
+- name: Threatfeeds main task
+  ansible.builtin.debug: msg='Running threatfeeds tasks'

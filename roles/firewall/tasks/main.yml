@@ -1,2 +1,2 @@
-- name: firewall main task
-  debug: msg='Running firewall tasks'
+- name: Firewall main task
+  ansible.builtin.debug: msg='Running firewall tasks'

@@ -1,2 +1,2 @@
-- name: backups main task
-  debug: msg='Running backups tasks'
+- name: Backups main task
+  ansible.builtin.debug: msg='Running backups tasks'
