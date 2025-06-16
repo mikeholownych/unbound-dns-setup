@@ -82,7 +82,7 @@ All passwords and tokens are handled securely via [Ansible Vault](https://docs.a
 
 ## 🤝 Contributing
 
-Pull requests are welcome! Please follow our [contributing guide](../CONTRIBUTING.md) and ensure your code passes linting:
+Pull requests are welcome! Please follow our [contributing guide](CONTRIBUTING.md) and ensure your code passes linting:
 
 ```bash
 make lint
