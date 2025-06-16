@@ -7,7 +7,7 @@
 
   pre_tasks:
     - name: Verify prerequisites and roles
-      ansible.builtin.import_role:
+      ansible.builtin.ansible.builtin.import_role:
         name: verify
 
   roles:

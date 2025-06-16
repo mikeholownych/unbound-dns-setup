@@ -11,7 +11,7 @@
   ansible.builtin.lineinfile:
     path: /etc/unbound/unbound.conf
     regexp: '^\s*log-queries:'
-    line: '    log-queries: yes'
+    line: '    log-queries: true'
     insertafter: '^server:'
     state: present
   notify: Restart Unbound
@@ -20,7 +20,7 @@
   ansible.builtin.lineinfile:
     path: /etc/unbound/unbound.conf
     regexp: '^\s*log-replies:'
-    line: '    log-replies: yes'
+    line: '    log-replies: true'
     insertafter: '^server:'
     state: present
   notify: Restart Unbound
