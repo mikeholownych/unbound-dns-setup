@@ -1,0 +1,13 @@
+---
+- name: Download DNS blocklist from threat feed
+  ansible.builtin.get_url:
+    url: https://example.com/blocklist.txt
+    dest: /etc/unbound/blocklist.txt
+    mode: '0644'
+
+- name: Convert blocklist to Unbound local-zone format
+  ansible.builtin.shell: |
+    awk '{ print "local-zone: \""$1"\" always_nxdomain" }' /etc/unbound/blocklist.txt > /etc/unbound/unbound-blocklist.conf
+  args:
+    executable: /bin/bash
+  changed_when: true

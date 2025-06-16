@@ -1,0 +1,10 @@
+[Unit]
+Description=NetFlow capture daemon (nfcapd)
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/nfcapd -w -D -l /var/log/nfdump -p 9995
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

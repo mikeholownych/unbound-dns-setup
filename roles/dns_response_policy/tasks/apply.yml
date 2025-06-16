@@ -1,0 +1,7 @@
+---
+- name: Include RPZ in Unbound config
+  ansible.builtin.lineinfile:
+    path: /etc/unbound/unbound.conf
+    regexp: '^include:.*rpz\.zone'
+    line: 'include: /etc/unbound/rpz.zone'
+    insertafter: EOF

@@ -1,0 +1,10 @@
+---
+- name: Send alert to external system
+  ansible.builtin.uri:
+    url: "{{ external_alert_webhook_url }}"
+    method: POST
+    headers:
+      Content-Type: "application/json"
+    body: "{{ lookup('template', 'webhook-payload.json.j2') }}"
+    body_format: json
+    status_code: 200

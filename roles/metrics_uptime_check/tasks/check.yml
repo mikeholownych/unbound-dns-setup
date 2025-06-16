@@ -1,0 +1,22 @@
+---
+- name: Create uptime Prometheus check config directory
+  ansible.builtin.file:
+    path: /etc/blackbox-exporter
+    state: directory
+    mode: '0755'
+
+- name: Deploy uptime check config file
+  ansible.builtin.template:
+    src: uptime-monitor.service.j2
+    dest: /etc/systemd/system/uptime-monitor.service
+    mode: '0644'
+
+- name: Reload systemd to register uptime monitor
+  ansible.builtin.systemd:
+    daemon_reload: yes
+
+- name: Start uptime monitor service
+  ansible.builtin.service:
+    name: uptime-monitor
+    enabled: yes
+    state: started

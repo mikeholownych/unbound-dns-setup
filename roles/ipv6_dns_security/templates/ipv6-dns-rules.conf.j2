@@ -1,0 +1,6 @@
+# IPv6 DNS rules template
+server:
+  do-ip6: yes
+  access-control: ::1/128 allow
+  access-control: 2001:db8::/32 allow
+  access-control: ::/0 refuse

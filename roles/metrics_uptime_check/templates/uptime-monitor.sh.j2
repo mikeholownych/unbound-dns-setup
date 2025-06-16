@@ -1,0 +1,14 @@
+#!/bin/bash
+DNS_SERVERS=({{ dns_servers | join(" ") }})
+DOMAIN="{{ monitor_domain | default('cloudflare.com') }}"
+
+while true; do
+  for SERVER in "${DNS_SERVERS[@]}"; do
+    if dig @"$SERVER" "$DOMAIN" +short > /dev/null 2>&1; then
+      echo "$(date) - DNS check to $SERVER succeeded" >> /var/log/uptime-monitor.log
+    else
+      echo "$(date) - DNS check to $SERVER failed" >> /var/log/uptime-monitor.log
+    fi
+  done
+  sleep 60
+done

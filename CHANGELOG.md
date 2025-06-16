@@ -1,3 +1,27 @@
+# Changelog
+
+## [1.1.0] - 2025-06-16
+
+### 🚀 Added
+- Role: `dns_threat_intel_sync` with systemd timer and threat feed automation
+- Role: `metrics_uptime_check` with logging and Prometheus readiness
+- Role: `dot_doh` secure resolver overlay via Stubby
+- Role: `dnssec` trust anchor installation and validation
+
+### 🛠 Improved
+- Full Ansible-lint compliance across all roles
+- Standardized use of FQCN in all tasks
+- Modular template structures for `unbound`, `pihole`, and `prometheus`
+
+### 🐛 Fixed
+- Removed all free-form `debug` module violations
+- Set proper `changed_when: false` on shell/command tasks to improve idempotency
+- Corrected handler state values (`restarted` → `started + notify reload` pattern)
+
+---
+
+For previous changes, see older tagged releases in the repo history.
+
 ## [v1.0.1] – 2025-06-16
 
 ### Added
@@ -20,3 +44,4 @@
 ---
 
 ✅ Fully linted, secure, and ready for deployment in any home lab or SMB environment.
+

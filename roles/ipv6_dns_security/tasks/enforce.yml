@@ -1,0 +1,13 @@
+---
+- name: Ensure IPv6 DNS security policies are defined
+  ansible.builtin.template:
+    src: ipv6-dns-rules.conf.j2
+    dest: /etc/unbound/ipv6-dns-rules.conf
+    mode: '0644'
+
+- name: Include IPv6 rules in main Unbound config
+  ansible.builtin.lineinfile:
+    path: /etc/unbound/unbound.conf
+    regexp: '^include:.*ipv6-dns-rules\.conf'
+    line: 'include: /etc/unbound/ipv6-dns-rules.conf'
+    insertafter: EOF

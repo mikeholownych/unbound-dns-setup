@@ -1,0 +1,11 @@
+---
+- name: Generate DNS query volume summary
+  ansible.builtin.shell: |
+    grep -i query /var/log/unbound/unbound.log | awk '{print $5}' | sort | uniq -c | sort -nr > /tmp/dns-query-summary.txt
+  args:
+    executable: /bin/bash
+
+- name: Load summary into template var
+  ansible.builtin.slurp:
+    src: /tmp/dns-query-summary.txt
+  register: dns_summary_file

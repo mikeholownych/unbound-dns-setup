@@ -1,0 +1,4 @@
+server:
+{% for feed in dns_threat_feeds %}
+  include: "/etc/dns/threat_intel/{{ feed.name }}"
+{% endfor %}

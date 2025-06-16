@@ -1,0 +1,5 @@
+#!/bin/bash
+
+INPUT="$1"
+echo "Analyzing cache statistics from $INPUT"
+grep -E 'expired|ttl=' "$INPUT" | wc -l

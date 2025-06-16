@@ -1,0 +1,4 @@
+{% raw %}# Generated Unbound blocklist
+{% for domain in blocklist %}
+local-zone: "{{ domain }}" always_nxdomain
+{% endfor %}{% endraw %}

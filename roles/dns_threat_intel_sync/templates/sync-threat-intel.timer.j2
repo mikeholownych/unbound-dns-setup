@@ -1,0 +1,12 @@
+[Unit]
+Description=Sync DNS threat intelligence feeds
+Wants=network-online.target
+After=network-online.target
+
+[Timer]
+OnBootSec=5min
+OnUnitActiveSec=6h
+Persistent=true
+
+[Install]
+WantedBy=timers.target

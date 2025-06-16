@@ -1,0 +1,15 @@
+resolution_type: GETDNS_RESOLUTION_STUB
+round_robin_upstreams: 1
+listen_addresses:
+  - 127.0.0.1@8053
+  - 0::1@8053
+upstream_recursive_servers:
+  - address_data: 1.1.1.1
+    tls_port: 853
+    tls_auth_name: "cloudflare-dns.com"
+    tls_pubkey_pinset:
+      - digest: "sha256"
+        value: "...replace-with-valid-pin..."
+  - address_data: 9.9.9.9
+    tls_port: 853
+    tls_auth_name: "dns.quad9.net"

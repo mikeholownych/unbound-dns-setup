@@ -1,0 +1,13 @@
+---
+- name: Configure DNSSEC options in Unbound
+  ansible.builtin.blockinfile:
+    path: /etc/unbound/unbound.conf
+    marker: "# {mark} DNSSEC config"
+    block: |
+      auto-trust-anchor-file: "/var/lib/unbound/root.key"
+      val-clean-additional: yes
+
+- name: Restart Unbound to apply DNSSEC settings
+  ansible.builtin.service:
+    name: unbound
+    state: restarted

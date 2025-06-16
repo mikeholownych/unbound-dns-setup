@@ -1,0 +1,11 @@
+---
+- name: Configure rsyslog for DNS query logging
+  ansible.builtin.template:
+    src: rsyslog-dns.conf.j2
+    dest: /etc/rsyslog.d/50-dns.conf
+    mode: '0644'
+
+- name: Restart rsyslog
+  ansible.builtin.service:
+    name: rsyslog
+    state: restarted

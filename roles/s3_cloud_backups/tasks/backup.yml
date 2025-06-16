@@ -1,0 +1,6 @@
+---
+- name: Upload backup to S3 bucket
+  ansible.builtin.shell: |
+    bash /usr/local/bin/s3-upload.sh "{{ s3_bucket }}" "{{ s3_backup_file }}"
+  args:
+    executable: /bin/bash

@@ -1,0 +1,18 @@
+---
+- name: Install DNSSEC validation tools
+  ansible.builtin.package:
+    name:
+      - unbound
+      - dnssec-tools
+    state: present
+
+- name: Ensure Unbound directory exists
+  ansible.builtin.file:
+    path: /var/lib/unbound
+    state: directory
+    mode: '0755'
+
+- name: Fetch root trust anchor
+  ansible.builtin.command:
+    cmd: unbound-anchor -a "/var/lib/unbound/root.key"
+  changed_when: false

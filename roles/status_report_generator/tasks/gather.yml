@@ -1,0 +1,4 @@
+---
+- name: Gather DNS and system health metrics
+  ansible.builtin.command: /usr/local/bin/collect-status.sh
+  register: status_report

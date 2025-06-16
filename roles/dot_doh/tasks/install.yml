@@ -1,0 +1,5 @@
+---
+- name: Install Stubby for DNS-over-TLS
+  ansible.builtin.package:
+    name: stubby
+    state: present

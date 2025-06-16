@@ -1,0 +1,24 @@
+#!/bin/bash
+
+set -e
+
+INTEL_DIR="/etc/dns/threat_intel"
+URLS=(
+{% for feed in dns_threat_feeds %}
+  "{{ feed.url }}"
+{% endfor %}
+)
+
+NAMES=(
+{% for feed in dns_threat_feeds %}
+  "{{ feed.name }}"
+{% endfor %}
+)
+
+mkdir -p "$INTEL_DIR"
+
+for i in "${!URLS[@]}"; do
+  curl -sSL "${URLS[$i]}" -o "$INTEL_DIR/${NAMES[$i]}"
+done
+
+systemctl restart unbound

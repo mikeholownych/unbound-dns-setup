@@ -1,0 +1,5 @@
+---
+- name: Install TLS reporting dependencies
+  ansible.builtin.package:
+    name: postfix
+    state: present

@@ -1,0 +1,11 @@
+#!/bin/bash
+
+BUCKET="$1"
+FILE="$2"
+
+if [ -z "$BUCKET" ] || [ -z "$FILE" ]; then
+  echo "Usage: $0 <bucket> <file>"
+  exit 1
+fi
+
+aws s3 cp "$FILE" "s3://$BUCKET/" --sse AES256

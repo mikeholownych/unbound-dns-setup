@@ -1,17 +1,29 @@
-- name: Provision DNS Infrastructure
-  hosts: dns_nodes
-  become: true
+---
+- name: DNSStack - Full Infrastructure Deployment (v1.1.0)
+  hosts: all
+  become: yes
+  vars_files:
+    - group_vars/all/vault.yml
+
+  pre_tasks:
+    - name: Verify prerequisites and roles
+      import_role:
+        name: verify
+
   roles:
-    - ad_integration
-    - alertmanager
-    - backups
-    - dns_logging
-    - fail2ban
-    - prometheus
-    - grafana
-    - pihole
-    - firewall
-    - nginx_proxy
-    - unbound
-    - threatfeeds
-    - verify
+    - role: firewall
+    - role: fail2ban
+    - role: ad_integration
+    - role: unbound
+    - role: dnssec              # ✅ Added in v1.1.0
+    - role: dot_doh             # ✅ Added in v1.1.0
+    - role: pihole
+    - role: prometheus
+    - role: grafana
+    - role: alertmanager
+    - role: nginx_proxy
+    - role: backups
+    - role: threatfeeds
+    - role: dns_threat_intel_sync   # ✅ Added in v1.1.0
+    - role: metrics_uptime_check    # ✅ Added in v1.1.0
+    - role: s3_cloud_backups

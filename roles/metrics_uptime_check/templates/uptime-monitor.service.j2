@@ -1,0 +1,12 @@
+[Unit]
+Description=DNS Uptime Monitor
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/uptime-monitor.sh
+Restart=always
+User=nobody
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,3 @@
+#!/bin/bash
+# Parse audit logs for AD-related entries
+ausearch -x /usr/sbin/samba --format text | grep -E 'logon|logoff|kerberos|krbtgt'

@@ -1,0 +1,11 @@
+---
+- name: Send HTML report via mail
+  ansible.builtin.mail:
+    host: "{{ smtp_server }}"
+    port: 587
+    username: "{{ smtp_user }}"
+    password: "{{ smtp_password }}"
+    to: "{{ report_recipient }}"
+    subject: "Weekly DNS & System Status Report"
+    subtype: html
+    body: "{{ lookup('template', 'status-report.html.j2') }}"
