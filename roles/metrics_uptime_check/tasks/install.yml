@@ -1,12 +1,10 @@
----
-- name: Install Prometheus Blackbox Exporter for uptime checks
-  ansible.builtin.apt:
+- ansible.builtin.apt:
     name: prometheus-blackbox-exporter
     state: present
     update_cache: true
-
-- name: Ensure Blackbox Exporter is enabled and running
-  ansible.builtin.service:
-    name: prometheus-blackbox-exporter
+  name: Install Prometheus Blackbox Exporter for uptime checks
+- ansible.builtin.service:
     enabled: true
+    name: prometheus-blackbox-exporter
     state: started
+  name: Ensure Blackbox Exporter is enabled and running

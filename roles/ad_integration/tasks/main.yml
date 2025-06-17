@@ -1,48 +1,42 @@
----
-- name: Install Required AD Packages
-  ansible.builtin.package:
+- ansible.builtin.package:
     name:
-      - realmd
-      - sssd
-      - oddjob
-      - oddjob-mkhomedir
-      - adcli
-      - samba-common
-      - samba-common-tools
-      - krb5-workstation
+    - realmd
+    - sssd
+    - oddjob
+    - oddjob-mkhomedir
+    - adcli
+    - samba-common
+    - samba-common-tools
+    - krb5-workstation
     state: present
-
-- name: Join the AD Domain
-  ansible.builtin.command:
+  name: Install Required AD Packages
+- ansible.builtin.command:
     cmd: echo '{{ ad_password }}' | realm join --user={{ ad_user }} {{ ad_domain }}
   become: true
+  changed_when: '''already joined'' not in join_output.stdout'
+  name: Join the AD Domain
   no_log: true
   register: join_output
-  changed_when: "'already joined' not in join_output.stdout"
-
-- name: Deploy SSSD Configuration
-  ansible.builtin.template:
-    src: sssd.conf.j2
+- ansible.builtin.template:
     dest: /etc/sssd/sssd.conf
-    owner: root
     group: root
     mode: '0600'
+    owner: root
+    src: sssd.conf.j2
+  name: Deploy SSSD Configuration
   notify: Restart SSSD
-
-- name: Enable and Start SSSD Service
-  ansible.builtin.service:
+- ansible.builtin.service:
+    enabled: true
     name: sssd
     state: started
-    enabled: true
-
-- name: Allow AD Admins to Use Sudo
-  ansible.builtin.lineinfile:
-    path: /etc/sudoers.d/domain_admins
+  name: Enable and Start SSSD Service
+- ansible.builtin.lineinfile:
     create: true
-    mode: '0440'
     line: '%{{ ad_admin_group }} ALL=(ALL) ALL'
-    validate: '/usr/sbin/visudo -cf %s'
-
-- name: Print Domain Join Status
-  ansible.builtin.debug:
-    msg: "✅ AD domain join complete for {{ ad_domain }}"
+    mode: '0440'
+    path: /etc/sudoers.d/domain_admins
+    validate: /usr/sbin/visudo -cf %s
+  name: Allow AD Admins to Use Sudo
+- ansible.builtin.debug:
+    msg: "\u2705 AD domain join complete for {{ ad_domain }}"
+  name: Print Domain Join Status

@@ -1,5 +1,4 @@
----
-- name: Send alert about DNS failover
-  ansible.builtin.debug:
-    msg: "⚠️ DNS failover triggered! Upstream resolver unreachable."
+- ansible.builtin.debug:
+    msg: "\u26A0\uFE0F DNS failover triggered! Upstream resolver unreachable."
+  name: Send alert about DNS failover
   when: dns_failover_required is defined and dns_failover_required

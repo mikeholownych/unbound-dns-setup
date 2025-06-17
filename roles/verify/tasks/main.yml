@@ -1,14 +1,10 @@
-- name: Run Fail2ban Verification
-  ansible.builtin.include_tasks: fail2ban.yml
-
-- name: Run Unbound Verification
-  ansible.builtin.include_tasks: unbound.yml
-
-- name: Run Pihole Verification
-  ansible.builtin.include_tasks: pihole.yml
-
-- name: Run Prometheus Verification
-  ansible.builtin.include_tasks: prometheus.yml
-
-- name: Run Grafana Verification
-  ansible.builtin.include_tasks: grafana.yml
+- ansible.builtin.include_tasks: fail2ban.yml
+  name: Run Fail2ban Verification
+- ansible.builtin.include_tasks: unbound.yml
+  name: Run Unbound Verification
+- ansible.builtin.include_tasks: pihole.yml
+  name: Run Pihole Verification
+- ansible.builtin.include_tasks: prometheus.yml
+  name: Run Prometheus Verification
+- ansible.builtin.include_tasks: grafana.yml
+  name: Run Grafana Verification

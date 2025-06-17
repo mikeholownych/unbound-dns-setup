@@ -1,6 +1,6 @@
-- name: Download DNS threat intel feeds
-  ansible.builtin.get_url:
-    url: "{{ item.url }}"
-    dest: "/etc/dns/threat_intel/{{ item.name }}"
+- ansible.builtin.get_url:
+    dest: /etc/dns/threat_intel/{{ item.name }}
     mode: '0644'
-  loop: "{{ dns_threat_feeds }}"
+    url: '{{ item.url }}'
+  loop: '{{ dns_threat_feeds }}'
+  name: Download DNS threat intel feeds

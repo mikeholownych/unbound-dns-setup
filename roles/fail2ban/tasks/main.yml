@@ -1,24 +1,20 @@
----
-- name: Install Fail2Ban
-  ansible.builtin.package:
+- ansible.builtin.package:
     name: fail2ban
     state: present
-
-- name: Deploy Fail2Ban Configuration
-  ansible.builtin.template:
-    src: jail.local.j2
+  name: Install Fail2Ban
+- ansible.builtin.template:
     dest: /etc/fail2ban/jail.local
-    owner: root
     group: root
     mode: '0644'
+    owner: root
+    src: jail.local.j2
+  name: Deploy Fail2Ban Configuration
   notify: Restart Fail2Ban
-
-- name: Enable and Start Fail2Ban
-  ansible.builtin.service:
+- ansible.builtin.service:
+    enabled: true
     name: fail2ban
     state: started
-    enabled: true
-
-- name: Print Fail2Ban setup message
-  ansible.builtin.debug:
-    msg: "✅ Fail2Ban installed and running"
+  name: Enable and Start Fail2Ban
+- ansible.builtin.debug:
+    msg: "\u2705 Fail2Ban installed and running"
+  name: Print Fail2Ban setup message

@@ -1,19 +1,16 @@
----
-- name: Deploy Unbound blocklist configuration
-  ansible.builtin.template:
-    src: unbound-blocklist.conf.j2
+- ansible.builtin.template:
     dest: /etc/unbound/unbound-blocklist.conf
-    owner: root
     group: root
     mode: '0644'
-
-- name: Include blocklist in main config
-  ansible.builtin.lineinfile:
-    path: /etc/unbound/unbound.conf
+    owner: root
+    src: unbound-blocklist.conf.j2
+  name: Deploy Unbound blocklist configuration
+- ansible.builtin.lineinfile:
     line: 'include: "/etc/unbound/unbound-blocklist.conf"'
+    path: /etc/unbound/unbound.conf
     state: present
-
-- name: Restart Unbound to apply blocklist
-  ansible.builtin.service:
+  name: Include blocklist in main config
+- ansible.builtin.service:
     name: unbound
     state: restarted
+  name: Restart Unbound to apply blocklist

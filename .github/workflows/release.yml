@@ -3,39 +3,39 @@ name: Release on Tag
 on:
   push:
     tags:
-      - 'v*.*.*'
+    - 'v*.*.*'
 
 jobs:
   release:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+    - name: Checkout code
+      uses: actions/checkout@v3
 
-      - name: Set up Git
-        run: |
-          git config --global user.name "GitHub Actions"
-          git config --global user.email "actions@github.com"
+    - name: Set up Git
+      run: |
+        git config --global user.name "GitHub Actions"
+        git config --global user.email "actions@github.com"
 
-      - name: Debug GITHUB_TOKEN presence
-        run: |
-          if [[ -z "${{ secrets.GITHUB_TOKEN }}" ]]; then
-            echo "❌ GITHUB_TOKEN is missing!"
-            exit 1
-          else
-            echo "✅ GITHUB_TOKEN is available."
-          fi
+    - name: Debug GITHUB_TOKEN presence
+      run: |
+        if [[ -z "${{ secrets.GITHUB_TOKEN }}" ]]; then
+          echo "❌ GITHUB_TOKEN is missing!"
+          exit 1
+        else
+          echo "✅ GITHUB_TOKEN is available."
+        fi
 
-      - name: Create GitHub Release
-        id: create_release
-        uses: softprops/action-gh-release@v1
-        with:
-          generate_release_notes: true
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Create GitHub Release
+      id: create_release
+      uses: softprops/action-gh-release@v1
+      with:
+        generate_release_notes: true
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Log release result
-        if: failure()
-        run: |
-          echo "⚠️ GitHub release creation failed with status: ${{ job.status }}"
-          echo "Check repo permissions or token issues in repository settings."
+    - name: Log release result
+      if: failure()
+      run: |
+        echo "⚠️ GitHub release creation failed with status: ${{ job.status }}"
+        echo "Check repo permissions or token issues in repository settings."

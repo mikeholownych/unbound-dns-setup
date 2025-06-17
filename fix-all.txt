@@ -1,0 +1,1086 @@
+🐍 Setting up Python virtual environment...
+Requirement already satisfied: pip in ./.venv/lib/python3.13/site-packages (25.1.1)
+Requirement already satisfied: setuptools in ./.venv/lib/python3.13/site-packages (80.9.0)
+Requirement already satisfied: wheel in ./.venv/lib/python3.13/site-packages (0.45.1)
+Requirement already satisfied: ansible-lint in ./.venv/lib/python3.13/site-packages (from -r requirements-dev.txt (line 2)) (25.5.0)
+Requirement already satisfied: ruamel.yaml in ./.venv/lib/python3.13/site-packages (from -r requirements-dev.txt (line 3)) (0.18.14)
+Requirement already satisfied: black in ./.venv/lib/python3.13/site-packages (from -r requirements-dev.txt (line 4)) (25.1.0)
+Requirement already satisfied: pre-commit in ./.venv/lib/python3.13/site-packages (from -r requirements-dev.txt (line 5)) (4.2.0)
+Requirement already satisfied: yamllint in ./.venv/lib/python3.13/site-packages (from -r requirements-dev.txt (line 6)) (1.37.1)
+Requirement already satisfied: poetry in ./.venv/lib/python3.13/site-packages (from -r requirements-dev.txt (line 7)) (2.1.3)
+Requirement already satisfied: ansible-core>=2.16.11 in ./.venv/lib/python3.13/site-packages (from ansible-lint->-r requirements-dev.txt (line 2)) (2.18.6)
+Requirement already satisfied: ansible-compat>=25.1.5 in ./.venv/lib/python3.13/site-packages (from ansible-lint->-r requirements-dev.txt (line 2)) (25.5.0)
+Requirement already satisfied: filelock>=3.8.2 in ./.venv/lib/python3.13/site-packages (from ansible-lint->-r requirements-dev.txt (line 2)) (3.18.0)
+Requirement already satisfied: importlib-metadata in ./.venv/lib/python3.13/site-packages (from ansible-lint->-r requirements-dev.txt (line 2)) (8.7.0)
+Requirement already satisfied: jsonschema>=4.10.0 in ./.venv/lib/python3.13/site-packages (from ansible-lint->-r requirements-dev.txt (line 2)) (4.24.0)
+Requirement already satisfied: packaging>=22.0 in ./.venv/lib/python3.13/site-packages (from ansible-lint->-r requirements-dev.txt (line 2)) (25.0)
+Requirement already satisfied: pathspec>=0.10.3 in ./.venv/lib/python3.13/site-packages (from ansible-lint->-r requirements-dev.txt (line 2)) (0.12.1)
+Requirement already satisfied: pyyaml>=6.0.2 in ./.venv/lib/python3.13/site-packages (from ansible-lint->-r requirements-dev.txt (line 2)) (6.0.2)
+Requirement already satisfied: referencing>=0.36.2 in ./.venv/lib/python3.13/site-packages (from ansible-lint->-r requirements-dev.txt (line 2)) (0.36.2)
+Requirement already satisfied: subprocess-tee>=0.4.1 in ./.venv/lib/python3.13/site-packages (from ansible-lint->-r requirements-dev.txt (line 2)) (0.4.2)
+Requirement already satisfied: wcmatch>=8.5.0 in ./.venv/lib/python3.13/site-packages (from ansible-lint->-r requirements-dev.txt (line 2)) (10.0)
+Requirement already satisfied: ruamel.yaml.clib>=0.2.7 in ./.venv/lib/python3.13/site-packages (from ruamel.yaml->-r requirements-dev.txt (line 3)) (0.2.12)
+Requirement already satisfied: click>=8.0.0 in ./.venv/lib/python3.13/site-packages (from black->-r requirements-dev.txt (line 4)) (8.2.1)
+Requirement already satisfied: mypy-extensions>=0.4.3 in ./.venv/lib/python3.13/site-packages (from black->-r requirements-dev.txt (line 4)) (1.1.0)
+Requirement already satisfied: platformdirs>=2 in ./.venv/lib/python3.13/site-packages (from black->-r requirements-dev.txt (line 4)) (4.3.8)
+Requirement already satisfied: cfgv>=2.0.0 in ./.venv/lib/python3.13/site-packages (from pre-commit->-r requirements-dev.txt (line 5)) (3.4.0)
+Requirement already satisfied: identify>=1.0.0 in ./.venv/lib/python3.13/site-packages (from pre-commit->-r requirements-dev.txt (line 5)) (2.6.12)
+Requirement already satisfied: nodeenv>=0.11.1 in ./.venv/lib/python3.13/site-packages (from pre-commit->-r requirements-dev.txt (line 5)) (1.9.1)
+Requirement already satisfied: virtualenv>=20.10.0 in ./.venv/lib/python3.13/site-packages (from pre-commit->-r requirements-dev.txt (line 5)) (20.31.2)
+Requirement already satisfied: build<2.0.0,>=1.2.1 in ./.venv/lib/python3.13/site-packages (from poetry->-r requirements-dev.txt (line 7)) (1.2.2.post1)
+Requirement already satisfied: cachecontrol<0.15.0,>=0.14.0 in ./.venv/lib/python3.13/site-packages (from cachecontrol[filecache]<0.15.0,>=0.14.0->poetry->-r requirements-dev.txt (line 7)) (0.14.3)
+Requirement already satisfied: cleo<3.0.0,>=2.1.0 in ./.venv/lib/python3.13/site-packages (from poetry->-r requirements-dev.txt (line 7)) (2.1.0)
+Requirement already satisfied: dulwich<0.23.0,>=0.22.6 in ./.venv/lib/python3.13/site-packages (from poetry->-r requirements-dev.txt (line 7)) (0.22.8)
+Requirement already satisfied: fastjsonschema<3.0.0,>=2.18.0 in ./.venv/lib/python3.13/site-packages (from poetry->-r requirements-dev.txt (line 7)) (2.21.1)
+Requirement already satisfied: findpython<0.7.0,>=0.6.2 in ./.venv/lib/python3.13/site-packages (from poetry->-r requirements-dev.txt (line 7)) (0.6.3)
+Requirement already satisfied: installer<0.8.0,>=0.7.0 in ./.venv/lib/python3.13/site-packages (from poetry->-r requirements-dev.txt (line 7)) (0.7.0)
+Requirement already satisfied: keyring<26.0.0,>=25.1.0 in ./.venv/lib/python3.13/site-packages (from poetry->-r requirements-dev.txt (line 7)) (25.6.0)
+Requirement already satisfied: pbs-installer<2026.0.0,>=2025.1.6 in ./.venv/lib/python3.13/site-packages (from pbs-installer[download,install]<2026.0.0,>=2025.1.6->poetry->-r requirements-dev.txt (line 7)) (2025.6.12)
+Requirement already satisfied: pkginfo<2.0,>=1.12 in ./.venv/lib/python3.13/site-packages (from poetry->-r requirements-dev.txt (line 7)) (1.12.1.2)
+Requirement already satisfied: poetry-core==2.1.3 in ./.venv/lib/python3.13/site-packages (from poetry->-r requirements-dev.txt (line 7)) (2.1.3)
+Requirement already satisfied: pyproject-hooks<2.0.0,>=1.0.0 in ./.venv/lib/python3.13/site-packages (from poetry->-r requirements-dev.txt (line 7)) (1.2.0)
+Requirement already satisfied: requests<3.0,>=2.26 in ./.venv/lib/python3.13/site-packages (from poetry->-r requirements-dev.txt (line 7)) (2.32.4)
+Requirement already satisfied: requests-toolbelt<2.0.0,>=1.0.0 in ./.venv/lib/python3.13/site-packages (from poetry->-r requirements-dev.txt (line 7)) (1.0.0)
+Requirement already satisfied: shellingham<2.0,>=1.5 in ./.venv/lib/python3.13/site-packages (from poetry->-r requirements-dev.txt (line 7)) (1.5.4)
+Requirement already satisfied: tomlkit<1.0.0,>=0.11.4 in ./.venv/lib/python3.13/site-packages (from poetry->-r requirements-dev.txt (line 7)) (0.13.3)
+Requirement already satisfied: trove-classifiers>=2022.5.19 in ./.venv/lib/python3.13/site-packages (from poetry->-r requirements-dev.txt (line 7)) (2025.5.9.12)
+Requirement already satisfied: msgpack<2.0.0,>=0.5.2 in ./.venv/lib/python3.13/site-packages (from cachecontrol<0.15.0,>=0.14.0->cachecontrol[filecache]<0.15.0,>=0.14.0->poetry->-r requirements-dev.txt (line 7)) (1.1.1)
+Requirement already satisfied: crashtest<0.5.0,>=0.4.1 in ./.venv/lib/python3.13/site-packages (from cleo<3.0.0,>=2.1.0->poetry->-r requirements-dev.txt (line 7)) (0.4.1)
+Requirement already satisfied: rapidfuzz<4.0.0,>=3.0.0 in ./.venv/lib/python3.13/site-packages (from cleo<3.0.0,>=2.1.0->poetry->-r requirements-dev.txt (line 7)) (3.13.0)
+Requirement already satisfied: urllib3>=1.25 in ./.venv/lib/python3.13/site-packages (from dulwich<0.23.0,>=0.22.6->poetry->-r requirements-dev.txt (line 7)) (2.4.0)
+Requirement already satisfied: SecretStorage>=3.2 in ./.venv/lib/python3.13/site-packages (from keyring<26.0.0,>=25.1.0->poetry->-r requirements-dev.txt (line 7)) (3.3.3)
+Requirement already satisfied: jeepney>=0.4.2 in ./.venv/lib/python3.13/site-packages (from keyring<26.0.0,>=25.1.0->poetry->-r requirements-dev.txt (line 7)) (0.9.0)
+Requirement already satisfied: jaraco.classes in ./.venv/lib/python3.13/site-packages (from keyring<26.0.0,>=25.1.0->poetry->-r requirements-dev.txt (line 7)) (3.4.0)
+Requirement already satisfied: jaraco.functools in ./.venv/lib/python3.13/site-packages (from keyring<26.0.0,>=25.1.0->poetry->-r requirements-dev.txt (line 7)) (4.1.0)
+Requirement already satisfied: jaraco.context in ./.venv/lib/python3.13/site-packages (from keyring<26.0.0,>=25.1.0->poetry->-r requirements-dev.txt (line 7)) (6.0.1)
+Requirement already satisfied: httpx<1,>=0.27.0 in ./.venv/lib/python3.13/site-packages (from pbs-installer[download,install]<2026.0.0,>=2025.1.6->poetry->-r requirements-dev.txt (line 7)) (0.28.1)
+Requirement already satisfied: zstandard>=0.21.0 in ./.venv/lib/python3.13/site-packages (from pbs-installer[download,install]<2026.0.0,>=2025.1.6->poetry->-r requirements-dev.txt (line 7)) (0.23.0)
+Requirement already satisfied: anyio in ./.venv/lib/python3.13/site-packages (from httpx<1,>=0.27.0->pbs-installer[download,install]<2026.0.0,>=2025.1.6->poetry->-r requirements-dev.txt (line 7)) (4.9.0)
+Requirement already satisfied: certifi in ./.venv/lib/python3.13/site-packages (from httpx<1,>=0.27.0->pbs-installer[download,install]<2026.0.0,>=2025.1.6->poetry->-r requirements-dev.txt (line 7)) (2025.6.15)
+Requirement already satisfied: httpcore==1.* in ./.venv/lib/python3.13/site-packages (from httpx<1,>=0.27.0->pbs-installer[download,install]<2026.0.0,>=2025.1.6->poetry->-r requirements-dev.txt (line 7)) (1.0.9)
+Requirement already satisfied: idna in ./.venv/lib/python3.13/site-packages (from httpx<1,>=0.27.0->pbs-installer[download,install]<2026.0.0,>=2025.1.6->poetry->-r requirements-dev.txt (line 7)) (3.10)
+Requirement already satisfied: h11>=0.16 in ./.venv/lib/python3.13/site-packages (from httpcore==1.*->httpx<1,>=0.27.0->pbs-installer[download,install]<2026.0.0,>=2025.1.6->poetry->-r requirements-dev.txt (line 7)) (0.16.0)
+Requirement already satisfied: charset_normalizer<4,>=2 in ./.venv/lib/python3.13/site-packages (from requests<3.0,>=2.26->poetry->-r requirements-dev.txt (line 7)) (3.4.2)
+Requirement already satisfied: distlib<1,>=0.3.7 in ./.venv/lib/python3.13/site-packages (from virtualenv>=20.10.0->pre-commit->-r requirements-dev.txt (line 5)) (0.3.9)
+Requirement already satisfied: jinja2>=3.0.0 in ./.venv/lib/python3.13/site-packages (from ansible-core>=2.16.11->ansible-lint->-r requirements-dev.txt (line 2)) (3.1.6)
+Requirement already satisfied: cryptography in ./.venv/lib/python3.13/site-packages (from ansible-core>=2.16.11->ansible-lint->-r requirements-dev.txt (line 2)) (45.0.4)
+Requirement already satisfied: resolvelib<1.1.0,>=0.5.3 in ./.venv/lib/python3.13/site-packages (from ansible-core>=2.16.11->ansible-lint->-r requirements-dev.txt (line 2)) (1.0.1)
+Requirement already satisfied: MarkupSafe>=2.0 in ./.venv/lib/python3.13/site-packages (from jinja2>=3.0.0->ansible-core>=2.16.11->ansible-lint->-r requirements-dev.txt (line 2)) (3.0.2)
+Requirement already satisfied: attrs>=22.2.0 in ./.venv/lib/python3.13/site-packages (from jsonschema>=4.10.0->ansible-lint->-r requirements-dev.txt (line 2)) (25.3.0)
+Requirement already satisfied: jsonschema-specifications>=2023.03.6 in ./.venv/lib/python3.13/site-packages (from jsonschema>=4.10.0->ansible-lint->-r requirements-dev.txt (line 2)) (2025.4.1)
+Requirement already satisfied: rpds-py>=0.7.1 in ./.venv/lib/python3.13/site-packages (from jsonschema>=4.10.0->ansible-lint->-r requirements-dev.txt (line 2)) (0.25.1)
+Requirement already satisfied: cffi>=1.14 in ./.venv/lib/python3.13/site-packages (from cryptography->ansible-core>=2.16.11->ansible-lint->-r requirements-dev.txt (line 2)) (1.17.1)
+Requirement already satisfied: pycparser in ./.venv/lib/python3.13/site-packages (from cffi>=1.14->cryptography->ansible-core>=2.16.11->ansible-lint->-r requirements-dev.txt (line 2)) (2.22)
+Requirement already satisfied: bracex>=2.1.1 in ./.venv/lib/python3.13/site-packages (from wcmatch>=8.5.0->ansible-lint->-r requirements-dev.txt (line 2)) (2.5.post1)
+Requirement already satisfied: sniffio>=1.1 in ./.venv/lib/python3.13/site-packages (from anyio->httpx<1,>=0.27.0->pbs-installer[download,install]<2026.0.0,>=2025.1.6->poetry->-r requirements-dev.txt (line 7)) (1.3.1)
+Requirement already satisfied: zipp>=3.20 in ./.venv/lib/python3.13/site-packages (from importlib-metadata->ansible-lint->-r requirements-dev.txt (line 2)) (3.23.0)
+Requirement already satisfied: more-itertools in ./.venv/lib/python3.13/site-packages (from jaraco.classes->keyring<26.0.0,>=25.1.0->poetry->-r requirements-dev.txt (line 7)) (10.7.0)
+📦 Installing Ansible collections...
+Starting galaxy collection install process
+Nothing to do. All requested collections are already installed. If you want to reinstall them, consider using `--force`.
+🔧 Fixing YAML document headers...
+Adding --- to ./.github/workflows/release.yml
+Adding --- to ./.github/workflows/bump-version.yml
+Adding --- to ./.github/workflows/ensure-labels.yml
+Adding --- to ./group_vars/all/vault.yml
+Adding --- to ./roles/ad_integration/tasks/main.yml
+Adding --- to ./roles/ad_integration/handlers/main.yml
+Adding --- to ./roles/alertmanager/tasks/main.yml
+Adding --- to ./roles/backups/tasks/main.yml
+Adding --- to ./roles/dns_logging/tasks/main.yml
+Adding --- to ./roles/fail2ban/tasks/main.yml
+Adding --- to ./roles/fail2ban/tasks/verify.yml
+Adding --- to ./roles/fail2ban/handlers/main.yml
+Adding --- to ./roles/firewall/tasks/main.yml
+Adding --- to ./roles/firewall/tasks/iptables.yml
+Adding --- to ./roles/firewall/handlers/main.yml
+Adding --- to ./roles/grafana/files/provisioning/dashboards.yml
+Adding --- to ./roles/grafana/files/provisioning/datasources.yml
+Adding --- to ./roles/grafana/tasks/main.yml
+Adding --- to ./roles/grafana/defaults/main.yml
+Adding --- to ./roles/nginx_proxy/tasks/main.yml
+Adding --- to ./roles/nginx_proxy/handlers/main.yml
+Adding --- to ./roles/pihole/tasks/main.yml
+Adding --- to ./roles/pihole/handlers/main.yml
+Adding --- to ./roles/prometheus/tasks/main.yml
+Adding --- to ./roles/prometheus/handlers/main.yml
+Adding --- to ./roles/threatfeeds/tasks/main.yml
+Adding --- to ./roles/unbound/tasks/main.yml
+Adding --- to ./roles/verify/tasks/fail2ban.yml
+Adding --- to ./roles/verify/tasks/main.yml
+Adding --- to ./roles/verify/tasks/unbound.yml
+Adding --- to ./roles/verify/tasks/pihole.yml
+Adding --- to ./roles/verify/tasks/prometheus.yml
+Adding --- to ./roles/verify/tasks/grafana.yml
+Adding --- to ./roles/dnssec/tasks/install.yml
+Adding --- to ./roles/dot_doh/tasks/install.yml
+Adding --- to ./roles/ha_keepalived/tasks/install.yml
+Adding --- to ./roles/ha_keepalived/tasks/configure.yml
+Adding --- to ./roles/netflow_monitoring/tasks/install.yml
+Adding --- to ./roles/netflow_monitoring/tasks/configure.yml
+Adding --- to ./roles/dns_query_logging/tasks/install.yml
+Adding --- to ./roles/dns_query_logging/tasks/configure.yml
+Adding --- to ./roles/dns_blocklist/tasks/fetch.yml
+Adding --- to ./roles/dns_blocklist/tasks/apply.yml
+Adding --- to ./roles/geo_dns/tasks/install.yml
+Adding --- to ./roles/geo_dns/tasks/configure.yml
+Adding --- to ./roles/ad_logging_audit/tasks/install.yml
+Adding --- to ./roles/ad_logging_audit/tasks/parse.yml
+Adding --- to ./roles/external_alerts/tasks/install.yml
+Adding --- to ./roles/external_alerts/tasks/notify.yml
+Adding --- to ./roles/status_report_generator/tasks/gather.yml
+Adding --- to ./roles/status_report_generator/tasks/email.yml
+Adding --- to ./roles/dns_metrics_summary/tasks/summarize.yml
+Adding --- to ./roles/dns_metrics_summary/tasks/upload.yml
+Adding --- to ./roles/s3_cloud_backups/tasks/install.yml
+Adding --- to ./roles/dns_cache_analytics/tasks/analyze.yml
+Adding --- to ./roles/compliance_audit/tasks/scan.yml
+Adding --- to ./roles/compliance_audit/tasks/report.yml
+Adding --- to ./roles/ipv6_dns_security/tasks/enforce.yml
+Adding --- to ./roles/ipv6_dns_security/tasks/validate.yml
+Adding --- to ./roles/dns_failover_monitor/tasks/alert.yml
+Adding --- to ./roles/tls_reporting/tasks/configure.yml
+Adding --- to ./roles/dns_response_policy/tasks/define.yml
+Adding --- to ./roles/dns_response_policy/tasks/apply.yml
+Adding --- to ./roles/metrics_uptime_check/tasks/install.yml
+Adding --- to ./roles/metrics_uptime_check/tasks/check.yml
+Adding --- to ./roles/dns_threat_intel_sync/tasks/fetch.yml
+Adding --- to ./roles/dns_threat_intel_sync/tasks/integrate.yml
+Adding --- to ./.pre-commit-config.yaml
+Adding --- to ./playbook.yml
+🧼 Fixing YAML indentation...
+🧼 Fixing YAML indentation...
+🧼 Fixing YAML indentation using ruamel.yaml...
+⚠️ YAML error in ./.github/ISSUE_TEMPLATE/bug_report.yml:
+    expected a single document in the stream
+but found another document
+  in ".github/ISSUE_TEMPLATE/bug_report.yml", line 2, column 1
+✅ Fixed: ./.github/workflows/release.yml
+✅ Fixed: ./.github/workflows/bump-version.yml
+✅ Fixed: ./.github/workflows/ensure-labels.yml
+⚠️ YAML error in ./.github/workflows/ansible-lint-and-test.yml:
+    expected a single document in the stream
+but found another document
+  in ".github/workflows/ansible-lint-and-test.yml", line 2, column 1
+⚠️ YAML error in ./.github/workflows/ansible-lint.yml:
+    expected a single document in the stream
+but found another document
+  in ".github/workflows/ansible-lint.yml", line 2, column 1
+⚠️ YAML error in ./docs/_config.yml:
+    expected a single document in the stream
+but found another document
+  in "docs/_config.yml", line 2, column 1
+✅ Fixed: ./group_vars/all/vault.yml
+⚠️ YAML error in ./group_vars/all.yml:
+    expected a single document in the stream
+but found another document
+  in "group_vars/all.yml", line 2, column 1
+✅ Fixed: ./roles/ad_integration/tasks/main.yml
+✅ Fixed: ./roles/ad_integration/handlers/main.yml
+✅ Fixed: ./roles/alertmanager/tasks/main.yml
+✅ Fixed: ./roles/backups/tasks/main.yml
+✅ Fixed: ./roles/dns_logging/tasks/main.yml
+✅ Fixed: ./roles/fail2ban/tasks/main.yml
+✅ Fixed: ./roles/fail2ban/tasks/verify.yml
+✅ Fixed: ./roles/fail2ban/handlers/main.yml
+✅ Fixed: ./roles/firewall/tasks/main.yml
+✅ Fixed: ./roles/firewall/tasks/iptables.yml
+✅ Fixed: ./roles/firewall/handlers/main.yml
+✅ Fixed: ./roles/grafana/files/provisioning/dashboards.yml
+✅ Fixed: ./roles/grafana/files/provisioning/datasources.yml
+✅ Fixed: ./roles/grafana/tasks/main.yml
+✅ Fixed: ./roles/grafana/defaults/main.yml
+✅ Fixed: ./roles/nginx_proxy/tasks/main.yml
+✅ Fixed: ./roles/nginx_proxy/handlers/main.yml
+✅ Fixed: ./roles/pihole/tasks/main.yml
+✅ Fixed: ./roles/pihole/handlers/main.yml
+✅ Fixed: ./roles/prometheus/tasks/main.yml
+✅ Fixed: ./roles/prometheus/handlers/main.yml
+✅ Fixed: ./roles/threatfeeds/tasks/main.yml
+✅ Fixed: ./roles/unbound/tasks/main.yml
+⚠️ YAML error in ./roles/unbound/handlers/main.yml:
+    expected a single document in the stream
+but found another document
+  in "roles/unbound/handlers/main.yml", line 2, column 1
+✅ Fixed: ./roles/verify/tasks/fail2ban.yml
+✅ Fixed: ./roles/verify/tasks/main.yml
+✅ Fixed: ./roles/verify/tasks/unbound.yml
+✅ Fixed: ./roles/verify/tasks/pihole.yml
+✅ Fixed: ./roles/verify/tasks/prometheus.yml
+✅ Fixed: ./roles/verify/tasks/grafana.yml
+✅ Fixed: ./roles/dnssec/tasks/install.yml
+⚠️ YAML error in ./roles/dnssec/tasks/configure.yml:
+    expected a single document in the stream
+but found another document
+  in "roles/dnssec/tasks/configure.yml", line 2, column 1
+✅ Fixed: ./roles/dot_doh/tasks/install.yml
+⚠️ YAML error in ./roles/dot_doh/tasks/configure.yml:
+    expected a single document in the stream
+but found another document
+  in "roles/dot_doh/tasks/configure.yml", line 2, column 1
+✅ Fixed: ./roles/ha_keepalived/tasks/install.yml
+✅ Fixed: ./roles/ha_keepalived/tasks/configure.yml
+✅ Fixed: ./roles/netflow_monitoring/tasks/install.yml
+✅ Fixed: ./roles/netflow_monitoring/tasks/configure.yml
+✅ Fixed: ./roles/dns_query_logging/tasks/install.yml
+✅ Fixed: ./roles/dns_query_logging/tasks/configure.yml
+✅ Fixed: ./roles/dns_blocklist/tasks/fetch.yml
+✅ Fixed: ./roles/dns_blocklist/tasks/apply.yml
+✅ Fixed: ./roles/geo_dns/tasks/install.yml
+✅ Fixed: ./roles/geo_dns/tasks/configure.yml
+✅ Fixed: ./roles/ad_logging_audit/tasks/install.yml
+✅ Fixed: ./roles/ad_logging_audit/tasks/parse.yml
+✅ Fixed: ./roles/external_alerts/tasks/install.yml
+✅ Fixed: ./roles/external_alerts/tasks/notify.yml
+✅ Fixed: ./roles/status_report_generator/tasks/gather.yml
+✅ Fixed: ./roles/status_report_generator/tasks/email.yml
+✅ Fixed: ./roles/dns_metrics_summary/tasks/summarize.yml
+✅ Fixed: ./roles/dns_metrics_summary/tasks/upload.yml
+⚠️ YAML error in ./roles/s3_cloud_backups/tasks/backup.yml:
+    expected a single document in the stream
+but found another document
+  in "roles/s3_cloud_backups/tasks/backup.yml", line 2, column 1
+✅ Fixed: ./roles/s3_cloud_backups/tasks/install.yml
+✅ Fixed: ./roles/dns_cache_analytics/tasks/analyze.yml
+✅ Fixed: ./roles/compliance_audit/tasks/scan.yml
+✅ Fixed: ./roles/compliance_audit/tasks/report.yml
+✅ Fixed: ./roles/ipv6_dns_security/tasks/enforce.yml
+✅ Fixed: ./roles/ipv6_dns_security/tasks/validate.yml
+⚠️ YAML error in ./roles/dns_failover_monitor/tasks/check.yml:
+    expected a single document in the stream
+but found another document
+  in "roles/dns_failover_monitor/tasks/check.yml", line 2, column 1
+✅ Fixed: ./roles/dns_failover_monitor/tasks/alert.yml
+⚠️ YAML error in ./roles/tls_reporting/tasks/install.yml:
+    expected a single document in the stream
+but found another document
+  in "roles/tls_reporting/tasks/install.yml", line 2, column 1
+✅ Fixed: ./roles/tls_reporting/tasks/configure.yml
+✅ Fixed: ./roles/dns_response_policy/tasks/define.yml
+✅ Fixed: ./roles/dns_response_policy/tasks/apply.yml
+✅ Fixed: ./roles/metrics_uptime_check/tasks/install.yml
+✅ Fixed: ./roles/metrics_uptime_check/tasks/check.yml
+✅ Fixed: ./roles/dns_threat_intel_sync/tasks/fetch.yml
+✅ Fixed: ./roles/dns_threat_intel_sync/tasks/integrate.yml
+✅ Fixed: ./.pre-commit-config.yaml
+✅ Fixed: ./playbook.yml
+🎨 Formatting Python files with Black...
+🔧 Running full lint auto-fix...
+Add missing YAML document start..........................................[41mFailed[m
+[2m- hook id: fix-yaml-header[m
+[2m- files were modified by this hook[m
+
+🔧 Running YAML document header fix...
+Adding --- to ./.github/workflows/bump-version.yml
+Adding --- to ./.github/workflows/ensure-labels.yml
+Adding --- to ./roles/ad_integration/handlers/main.yml
+Adding --- to ./roles/fail2ban/tasks/verify.yml
+Adding --- to ./roles/fail2ban/handlers/main.yml
+Adding --- to ./roles/firewall/tasks/main.yml
+Adding --- to ./roles/firewall/tasks/iptables.yml
+Adding --- to ./roles/firewall/handlers/main.yml
+Adding --- to ./roles/grafana/files/provisioning/dashboards.yml
+Adding --- to ./roles/grafana/files/provisioning/datasources.yml
+Adding --- to ./roles/grafana/tasks/main.yml
+Adding --- to ./roles/grafana/defaults/main.yml
+Adding --- to ./roles/nginx_proxy/tasks/main.yml
+Adding --- to ./roles/nginx_proxy/handlers/main.yml
+Adding --- to ./roles/pihole/tasks/main.yml
+Adding --- to ./roles/pihole/handlers/main.yml
+Adding --- to ./roles/prometheus/tasks/main.yml
+Adding --- to ./roles/prometheus/handlers/main.yml
+Adding --- to ./roles/threatfeeds/tasks/main.yml
+Adding --- to ./roles/unbound/tasks/main.yml
+Adding --- to ./roles/verify/tasks/fail2ban.yml
+Adding --- to ./roles/verify/tasks/main.yml
+Adding --- to ./roles/dnssec/tasks/install.yml
+Adding --- to ./roles/dot_doh/tasks/install.yml
+Adding --- to ./roles/ha_keepalived/tasks/install.yml
+Adding --- to ./roles/ha_keepalived/tasks/configure.yml
+Adding --- to ./roles/netflow_monitoring/tasks/install.yml
+Adding --- to ./roles/netflow_monitoring/tasks/configure.yml
+Adding --- to ./roles/dns_query_logging/tasks/install.yml
+Adding --- to ./roles/dns_query_logging/tasks/configure.yml
+Adding --- to ./roles/dns_blocklist/tasks/fetch.yml
+Adding --- to ./roles/dns_blocklist/tasks/apply.yml
+Adding --- to ./roles/geo_dns/tasks/install.yml
+Adding --- to ./roles/geo_dns/tasks/configure.yml
+Adding --- to ./roles/ad_logging_audit/tasks/install.yml
+Adding --- to ./roles/ad_logging_audit/tasks/parse.yml
+Adding --- to ./roles/external_alerts/tasks/install.yml
+Adding --- to ./roles/external_alerts/tasks/notify.yml
+Adding --- to ./roles/status_report_generator/tasks/gather.yml
+Adding --- to ./roles/status_report_generator/tasks/email.yml
+Adding --- to ./roles/dns_metrics_summary/tasks/summarize.yml
+Adding --- to ./roles/dns_metrics_summary/tasks/upload.yml
+Adding --- to ./roles/s3_cloud_backups/tasks/install.yml
+Adding --- to ./roles/dns_cache_analytics/tasks/analyze.yml
+Adding --- to ./roles/compliance_audit/tasks/scan.yml
+Adding --- to ./roles/compliance_audit/tasks/report.yml
+Adding --- to ./roles/ipv6_dns_security/tasks/enforce.yml
+Adding --- to ./roles/ipv6_dns_security/tasks/validate.yml
+Adding --- to ./roles/tls_reporting/tasks/configure.yml
+Adding --- to ./roles/dns_response_policy/tasks/define.yml
+Adding --- to ./roles/dns_response_policy/tasks/apply.yml
+Adding --- to ./roles/metrics_uptime_check/tasks/install.yml
+Adding --- to ./roles/metrics_uptime_check/tasks/check.yml
+Adding --- to ./roles/dns_threat_intel_sync/tasks/fetch.yml
+Adding --- to ./roles/dns_threat_intel_sync/tasks/integrate.yml
+Adding --- to ./.pre-commit-config.yaml
+✅ YAML headers fixed.
+🔧 Running YAML document header fix...
+Adding --- to ./.github/workflows/bump-version.yml
+Adding --- to ./.github/workflows/ensure-labels.yml
+Adding --- to ./roles/ad_integration/handlers/main.yml
+Adding --- to ./roles/fail2ban/tasks/verify.yml
+Adding --- to ./roles/fail2ban/handlers/main.yml
+Adding --- to ./roles/firewall/tasks/main.yml
+Adding --- to ./roles/firewall/tasks/iptables.yml
+Adding --- to ./roles/firewall/handlers/main.yml
+Adding --- to ./roles/grafana/files/provisioning/dashboards.yml
+Adding --- to ./roles/grafana/files/provisioning/datasources.yml
+Adding --- to ./roles/grafana/tasks/main.yml
+Adding --- to ./roles/grafana/defaults/main.yml
+Adding --- to ./roles/nginx_proxy/tasks/main.yml
+Adding --- to ./roles/nginx_proxy/handlers/main.yml
+Adding --- to ./roles/pihole/tasks/main.yml
+Adding --- to ./roles/pihole/handlers/main.yml
+Adding --- to ./roles/prometheus/tasks/main.yml
+Adding --- to ./roles/prometheus/handlers/main.yml
+Adding --- to ./roles/threatfeeds/tasks/main.yml
+Adding --- to ./roles/unbound/tasks/main.yml
+Adding --- to ./roles/verify/tasks/fail2ban.yml
+Adding --- to ./roles/verify/tasks/main.yml
+Adding --- to ./roles/dnssec/tasks/install.yml
+Adding --- to ./roles/dot_doh/tasks/install.yml
+Adding --- to ./roles/ha_keepalived/tasks/install.yml
+Adding --- to ./roles/ha_keepalived/tasks/configure.yml
+Adding --- to ./roles/netflow_monitoring/tasks/install.yml
+Adding --- to ./roles/netflow_monitoring/tasks/configure.yml
+Adding --- to ./roles/dns_query_logging/tasks/install.yml
+Adding --- to ./roles/dns_query_logging/tasks/configure.yml
+Adding --- to ./roles/dns_blocklist/tasks/fetch.yml
+Adding --- to ./roles/dns_blocklist/tasks/apply.yml
+Adding --- to ./roles/geo_dns/tasks/install.yml
+Adding --- to ./roles/geo_dns/tasks/configure.yml
+Adding --- to ./roles/ad_logging_audit/tasks/install.yml
+Adding --- to ./roles/ad_logging_audit/tasks/parse.yml
+Adding --- to ./roles/external_alerts/tasks/install.yml
+Adding --- to ./roles/external_alerts/tasks/notify.yml
+Adding --- to ./roles/status_report_generator/tasks/gather.yml
+Adding --- to ./roles/status_report_generator/tasks/email.yml
+Adding --- to ./roles/dns_metrics_summary/tasks/summarize.yml
+Adding --- to ./roles/dns_metrics_summary/tasks/upload.yml
+Adding --- to ./roles/s3_cloud_backups/tasks/install.yml
+Adding --- to ./roles/dns_cache_analytics/tasks/analyze.yml
+Adding --- to ./roles/compliance_audit/tasks/scan.yml
+Adding --- to ./roles/compliance_audit/tasks/report.yml
+Adding --- to ./roles/ipv6_dns_security/tasks/enforce.yml
+Adding --- to ./roles/ipv6_dns_security/tasks/validate.yml
+Adding --- to ./roles/tls_reporting/tasks/configure.yml
+Adding --- to ./roles/dns_response_policy/tasks/define.yml
+Adding --- to ./roles/dns_response_policy/tasks/apply.yml
+Adding --- to ./roles/metrics_uptime_check/tasks/install.yml
+Adding --- to ./roles/metrics_uptime_check/tasks/check.yml
+Adding --- to ./roles/dns_threat_intel_sync/tasks/fetch.yml
+Adding --- to ./roles/dns_threat_intel_sync/tasks/integrate.yml
+Adding --- to ./.pre-commit-config.yaml
+✅ YAML headers fixed.
+
+Auto-fix ansible-lint violations.........................................[41mFailed[m
+[2m- hook id: fix-ansible-lint[m
+[2m- exit code: 1[m
+[2m- files were modified by this hook[m
+
+Starting galaxy collection install process
+Nothing to do. All requested collections are already installed. If you want to reinstall them, consider using `--force`.
+Traceback (most recent call last):
+  File [35m"/home/mike/unbound-dns-setup/utils/fix_ansible_lint.py"[0m, line [35m48[0m, in [35m<module>[0m
+    [31mfix_file[0m[1;31m(os.path.join(root, file))[0m
+    [31m~~~~~~~~[0m[1;31m^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  File [35m"/home/mike/unbound-dns-setup/utils/fix_ansible_lint.py"[0m, line [35m33[0m, in [35mfix_file[0m
+    content = yaml.safe_load(f)
+  File [35m"/home/linuxbrew/.linuxbrew/lib/python3.13/site-packages/yaml/__init__.py"[0m, line [35m125[0m, in [35msafe_load[0m
+    return load(stream, SafeLoader)
+  File [35m"/home/linuxbrew/.linuxbrew/lib/python3.13/site-packages/yaml/__init__.py"[0m, line [35m81[0m, in [35mload[0m
+    return [31mloader.get_single_data[0m[1;31m()[0m
+           [31m~~~~~~~~~~~~~~~~~~~~~~[0m[1;31m^^[0m
+  File [35m"/home/linuxbrew/.linuxbrew/lib/python3.13/site-packages/yaml/constructor.py"[0m, line [35m49[0m, in [35mget_single_data[0m
+    node = self.get_single_node()
+  File [35m"/home/linuxbrew/.linuxbrew/lib/python3.13/site-packages/yaml/composer.py"[0m, line [35m41[0m, in [35mget_single_node[0m
+    raise ComposerError("expected a single document in the stream",
+            document.start_mark, "but found another document",
+            event.start_mark)
+[1;35myaml.composer.ComposerError[0m: [35mexpected a single document in the stream
+but found another document
+  in "roles/nginx_proxy/tasks/main.yml", line 2, column 1[0m
+Starting galaxy collection install process
+Nothing to do. All requested collections are already installed. If you want to reinstall them, consider using `--force`.
+Traceback (most recent call last):
+  File [35m"/home/mike/unbound-dns-setup/utils/fix_ansible_lint.py"[0m, line [35m48[0m, in [35m<module>[0m
+    [31mfix_file[0m[1;31m(os.path.join(root, file))[0m
+    [31m~~~~~~~~[0m[1;31m^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  File [35m"/home/mike/unbound-dns-setup/utils/fix_ansible_lint.py"[0m, line [35m33[0m, in [35mfix_file[0m
+    content = yaml.safe_load(f)
+  File [35m"/home/linuxbrew/.linuxbrew/lib/python3.13/site-packages/yaml/__init__.py"[0m, line [35m125[0m, in [35msafe_load[0m
+    return load(stream, SafeLoader)
+  File [35m"/home/linuxbrew/.linuxbrew/lib/python3.13/site-packages/yaml/__init__.py"[0m, line [35m81[0m, in [35mload[0m
+    return [31mloader.get_single_data[0m[1;31m()[0m
+           [31m~~~~~~~~~~~~~~~~~~~~~~[0m[1;31m^^[0m
+  File [35m"/home/linuxbrew/.linuxbrew/lib/python3.13/site-packages/yaml/constructor.py"[0m, line [35m49[0m, in [35mget_single_data[0m
+    node = self.get_single_node()
+  File [35m"/home/linuxbrew/.linuxbrew/lib/python3.13/site-packages/yaml/composer.py"[0m, line [35m41[0m, in [35mget_single_node[0m
+    raise ComposerError("expected a single document in the stream",
+            document.start_mark, "but found another document",
+            event.start_mark)
+[1;35myaml.composer.ComposerError[0m: [35mexpected a single document in the stream
+but found another document
+  in "roles/nginx_proxy/tasks/main.yml", line 2, column 1[0m
+
+black....................................................................[42mPassed[m
+yamllint.................................................................[41mFailed[m
+[2m- hook id: yamllint[m
+[2m- exit code: 1[m
+
+[4mroles/fail2ban/tasks/main.yml[0m
+  [2m1:1[0m       [33mwarning[0m  missing document start "---"  [2m(document-start)[0m
+
+[4mroles/verify/tasks/unbound.yml[0m
+  [2m1:1[0m       [33mwarning[0m  missing document start "---"  [2m(document-start)[0m
+  [2m7:5[0m       [31merror[0m    wrong indentation: expected 6 but found 4  [2m(indentation)[0m
+
+[4mroles/alertmanager/tasks/main.yml[0m
+  [2m1:1[0m       [33mwarning[0m  missing document start "---"  [2m(document-start)[0m
+  [2m21:5[0m      [31merror[0m    wrong indentation: expected 6 but found 4  [2m(indentation)[0m
+  [2m25:5[0m      [31merror[0m    wrong indentation: expected 6 but found 4  [2m(indentation)[0m
+
+[4mroles/grafana/files/provisioning/datasources.yml[0m
+  [2m5:1[0m       [31merror[0m    wrong indentation: expected at least 1  [2m(indentation)[0m
+
+[4m.pre-commit-config.yaml[0m
+  [2m3:1[0m       [31merror[0m    wrong indentation: expected at least 1  [2m(indentation)[0m
+  [2m5:3[0m       [31merror[0m    wrong indentation: expected at least 3  [2m(indentation)[0m
+  [2m23:3[0m      [31merror[0m    wrong indentation: expected at least 3  [2m(indentation)[0m
+  [2m30:3[0m      [31merror[0m    wrong indentation: expected at least 3  [2m(indentation)[0m
+  [2m37:3[0m      [31merror[0m    wrong indentation: expected at least 3  [2m(indentation)[0m
+
+[4mgroup_vars/all.yml[0m
+  [2m15:1[0m      [31merror[0m    wrong indentation: expected at least 1  [2m(indentation)[0m
+
+[4mroles/verify/tasks/grafana.yml[0m
+  [2m1:1[0m       [33mwarning[0m  missing document start "---"  [2m(document-start)[0m
+  [2m10:5[0m      [31merror[0m    wrong indentation: expected 6 but found 4  [2m(indentation)[0m
+
+[4mroles/grafana/files/provisioning/dashboards.yml[0m
+  [2m5:1[0m       [31merror[0m    wrong indentation: expected at least 1  [2m(indentation)[0m
+
+[4mroles/netflow_monitoring/tasks/install.yml[0m
+  [2m5:5[0m       [31merror[0m    wrong indentation: expected 6 but found 4  [2m(indentation)[0m
+
+[4mroles/unbound/tasks/main.yml[0m
+  [2m8:3[0m       [31merror[0m    wrong indentation: expected 4 but found 2  [2m(indentation)[0m
+  [2m29:5[0m      [31merror[0m    wrong indentation: expected 6 but found 4  [2m(indentation)[0m
+  [2m35:5[0m      [31merror[0m    wrong indentation: expected 6 but found 4  [2m(indentation)[0m
+
+[4mroles/geo_dns/tasks/install.yml[0m
+  [2m5:5[0m       [31merror[0m    wrong indentation: expected 6 but found 4  [2m(indentation)[0m
+
+[4mroles/firewall/tasks/main.yml[0m
+  [2m1:1[0m       [33mwarning[0m  missing document start "---"  [2m(document-start)[0m
+  [2m14:3[0m      [31merror[0m    wrong indentation: expected 4 but found 2  [2m(indentation)[0m
+  [2m21:3[0m      [31merror[0m    wrong indentation: expected 4 but found 2  [2m(indentation)[0m
+  [2m30:3[0m      [31merror[0m    wrong indentation: expected 4 but found 2  [2m(indentation)[0m
+
+[4mroles/verify/tasks/prometheus.yml[0m
+  [2m1:1[0m       [33mwarning[0m  missing document start "---"  [2m(document-start)[0m
+  [2m10:5[0m      [31merror[0m    wrong indentation: expected 6 but found 4  [2m(indentation)[0m
+
+[4mroles/ad_logging_audit/tasks/install.yml[0m
+  [2m5:5[0m       [31merror[0m    wrong indentation: expected 6 but found 4  [2m(indentation)[0m
+
+[4mroles/prometheus/tasks/main.yml[0m
+  [2m20:5[0m      [31merror[0m    wrong indentation: expected 6 but found 4  [2m(indentation)[0m
+  [2m25:5[0m      [31merror[0m    wrong indentation: expected 6 but found 4  [2m(indentation)[0m
+
+[4mroles/ad_integration/tasks/main.yml[0m
+  [2m1:1[0m       [33mwarning[0m  missing document start "---"  [2m(document-start)[0m
+  [2m3:5[0m       [31merror[0m    wrong indentation: expected 6 but found 4  [2m(indentation)[0m
+
+[4m.github/workflows/ansible-lint-and-test.yml[0m
+  [2m5:1[0m       [33mwarning[0m  truthy value should be one of [false, true]  [2m(truthy)[0m
+  [2m8:5[0m       [31merror[0m    wrong indentation: expected 6 but found 4  [2m(indentation)[0m
+  [2m13:5[0m      [31merror[0m    wrong indentation: expected 6 but found 4  [2m(indentation)[0m
+  [2m23:5[0m      [31merror[0m    wrong indentation: expected 6 but found 4  [2m(indentation)[0m
+
+[4mroles/dnssec/tasks/install.yml[0m
+  [2m6:5[0m       [31merror[0m    wrong indentation: expected 6 but found 4  [2m(indentation)[0m
+
+[4mroles/firewall/tasks/iptables.yml[0m
+  [2m34:3[0m      [31merror[0m    wrong indentation: expected at least 3  [2m(indentation)[0m
+  [2m42:3[0m      [31merror[0m    wrong indentation: expected at least 3  [2m(indentation)[0m
+  [2m51:3[0m      [31merror[0m    wrong indentation: expected at least 3  [2m(indentation)[0m
+
+[4m.github/workflows/bump-version.yml[0m
+  [2m4:1[0m       [33mwarning[0m  truthy value should be one of [false, true]  [2m(truthy)[0m
+  [2m13:5[0m      [31merror[0m    wrong indentation: expected 6 but found 4  [2m(indentation)[0m
+
+[4m.github/workflows/ansible-lint.yml[0m
+  [2m5:1[0m       [33mwarning[0m  truthy value should be one of [false, true]  [2m(truthy)[0m
+  [2m8:5[0m       [31merror[0m    wrong indentation: expected 6 but found 4  [2m(indentation)[0m
+  [2m17:5[0m      [31merror[0m    wrong indentation: expected 6 but found 4  [2m(indentation)[0m
+
+[4mroles/pihole/tasks/main.yml[0m
+  [2m23:5[0m      [31merror[0m    wrong indentation: expected 6 but found 4  [2m(indentation)[0m
+  [2m31:5[0m      [31merror[0m    wrong indentation: expected 6 but found 4  [2m(indentation)[0m
+
+[4mroles/dns_logging/tasks/main.yml[0m
+  [2m1:1[0m       [33mwarning[0m  missing document start "---"  [2m(document-start)[0m
+
+[4m.github/workflows/release.yml[0m
+  [2m1:1[0m       [33mwarning[0m  missing document start "---"  [2m(document-start)[0m
+  [2m3:1[0m       [33mwarning[0m  truthy value should be one of [false, true]  [2m(truthy)[0m
+  [2m6:5[0m       [31merror[0m    wrong indentation: expected 6 but found 4  [2m(indentation)[0m
+  [2m12:5[0m      [31merror[0m    wrong indentation: expected 6 but found 4  [2m(indentation)[0m
+
+[4mroles/dns_failover_monitor/tasks/alert.yml[0m
+  [2m1:1[0m       [33mwarning[0m  missing document start "---"  [2m(document-start)[0m
+
+[4m.github/workflows/ensure-labels.yml[0m
+  [2m4:1[0m       [33mwarning[0m  truthy value should be one of [false, true]  [2m(truthy)[0m
+  [2m13:5[0m      [31merror[0m    wrong indentation: expected 6 but found 4  [2m(indentation)[0m
+
+[4mroles/grafana/tasks/main.yml[0m
+  [2m1:1[0m       [33mwarning[0m  missing document start "---"  [2m(document-start)[0m
+  [2m7:3[0m       [31merror[0m    wrong indentation: expected 4 but found 2  [2m(indentation)[0m
+
+[4mgroup_vars/all/vault.yml[0m
+  [2m1:1[0m       [33mwarning[0m  missing document start "---"  [2m(document-start)[0m
+  [2m1:121[0m     [31merror[0m    line too long (2427 > 120 characters)  [2m(line-length)[0m
+
+[4mplaybook.yml[0m
+  [2m1:1[0m       [33mwarning[0m  missing document start "---"  [2m(document-start)[0m
+  [2m5:3[0m       [31merror[0m    wrong indentation: expected at least 3  [2m(indentation)[0m
+  [2m8:3[0m       [31merror[0m    wrong indentation: expected at least 3  [2m(indentation)[0m
+  [2m13:3[0m      [31merror[0m    wrong indentation: expected 4 but found 2  [2m(indentation)[0m
+
+[4mroles/backups/tasks/main.yml[0m
+  [2m1:1[0m       [33mwarning[0m  missing document start "---"  [2m(document-start)[0m
+
+[4mroles/verify/tasks/pihole.yml[0m
+  [2m1:1[0m       [33mwarning[0m  missing document start "---"  [2m(document-start)[0m
+  [2m9:5[0m       [31merror[0m    wrong indentation: expected 6 but found 4  [2m(indentation)[0m
+
+[4mroles/nginx_proxy/tasks/main.yml[0m
+  [2m23:5[0m      [31merror[0m    wrong indentation: expected 6 but found 4  [2m(indentation)[0m
+  [2m28:5[0m      [31merror[0m    wrong indentation: expected 6 but found 4  [2m(indentation)[0m
+
+Ansible-lint.............................................................[41mFailed[m
+[2m- hook id: ansible-lint[m
+[2m- exit code: 2[m
+
+[2mINFO     Identified [35m/home/mike/unbound-dns-setup[0m as project root due [1m.git directory[0m.[0m
+[2mINFO     Collection paths was patched to include extra directories /home/mike/.ansible/collections,/usr/share/ansible/collections,/home/mike/.cache/pre-commit/repok5mqlpvj/py_env-python3.13/lib/python3.13/site-packages[0m
+[2mINFO     Set ANSIBLE_LIBRARY=/home/mike/unbound-dns-setup/.ansible/modules:/home/mike/.ansible/plugins/modules:/usr/share/ansible/plugins/modules[0m
+[2mINFO     Set ANSIBLE_COLLECTIONS_PATH=/home/mike/unbound-dns-setup/.ansible/collections:/home/mike/.ansible/collections:/usr/share/ansible/collections:/home/mike/.cache/pre-commit/repok5mqlpvj/py_env-python3.13/lib/python3.13/site-packages[0m
+[2mINFO     Set ANSIBLE_ROLES_PATH=/home/mike/unbound-dns-setup/.ansible/roles:roles:/home/mike/.ansible/roles:/usr/share/ansible/roles:/etc/ansible/roles[0m
+[2mINFO     Running ansible-galaxy collection install -v -r /home/mike/unbound-dns-setup/collections/requirements.yml[0m
+[2mINFO     Loading ignores from .gitignore[0m
+[2mINFO     Loading ignores from .gitignore[0m
+[2mINFO     Executing syntax check on role roles/dns_query_logging (0.88s)[0m
+[2mINFO     Executing syntax check on role roles/dns_cache_analytics (0.89s)[0m
+[2mINFO     Executing syntax check on role roles/tls_reporting (0.87s)[0m
+[2mINFO     Executing syntax check on role roles/ha_keepalived (0.88s)[0m
+[2mINFO     Executing syntax check on role roles/ipv6_dns_security (0.87s)[0m
+[2mINFO     Executing syntax check on role roles/dns_logging (0.94s)[0m
+[2mINFO     Executing syntax check on role roles/alertmanager (0.97s)[0m
+[2mINFO     Executing syntax check on role roles/netflow_monitoring (0.89s)[0m
+[2mINFO     Executing syntax check on role roles/dns_metrics_summary (0.88s)[0m
+[2mINFO     Executing syntax check on role roles/status_report_generator (0.88s)[0m
+[2mINFO     Executing syntax check on role roles/metrics_uptime_check (0.87s)[0m
+[2mINFO     Executing syntax check on role roles/backups (0.95s)[0m
+[2mINFO     Executing syntax check on role roles/firewall (0.99s)[0m
+[2mINFO     Executing syntax check on role roles/unbound (0.95s)[0m
+[2mINFO     Executing syntax check on role roles/external_alerts (0.87s)[0m
+[2mINFO     Executing syntax check on role roles/grafana (0.95s)[0m
+[2mINFO     Executing syntax check on role roles/nginx_proxy (0.88s)[0m
+[2mINFO     Executing syntax check on role roles/threatfeeds (0.88s)[0m
+[2mINFO     Executing syntax check on role roles/compliance_audit (0.87s)[0m
+[2mINFO     Executing syntax check on role roles/dns_failover_monitor (0.87s)[0m
+[2mINFO     Executing syntax check on role roles/dnssec (0.88s)[0m
+[2mINFO     Executing syntax check on playbook playbook.yml (0.87s)[0m
+[2mINFO     Executing syntax check on role roles/fail2ban (0.94s)[0m
+[2mINFO     Executing syntax check on role roles/ad_integration (0.97s)[0m
+[2mINFO     Executing syntax check on role roles/geo_dns (0.88s)[0m
+[2mINFO     Executing syntax check on role roles/dns_response_policy (0.88s)[0m
+[2mINFO     Executing syntax check on role roles/prometheus (0.96s)[0m
+[2mINFO     Executing syntax check on role roles/dns_threat_intel_sync (0.88s)[0m
+[2mINFO     Executing syntax check on role roles/dns_blocklist (0.89s)[0m
+[2mINFO     Executing syntax check on role roles/ad_logging_audit (0.88s)[0m
+[2mINFO     Executing syntax check on role roles/dot_doh (0.87s)[0m
+[2mINFO     Executing syntax check on role roles/pihole (0.95s)[0m
+[2mINFO     Executing syntax check on role roles/s3_cloud_backups (0.88s)[0m
+[2mINFO     Executing syntax check on role roles/verify (0.87s)[0m
+[2mWARNING  Ignored exception from JinjaRule.matchyaml while processing group_vars/all.yml (vars): We were unable to read either as JSON nor YAML, these are the errors we got from each:
+JSON: Expecting value: line 1 column 1 (char 0)
+
+Syntax Error while loading YAML.
+  but found another document. expected a single document in the stream
+but found another document
+  in "<unicode string>", line 2, column 1
+
+The error appears to be in '/home/mike/unbound-dns-setup/group_vars/all.yml': line 2, column 1, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+---
+---
+^ here
+[0m
+[2mWARNING  Ignored exception from ValidateSchemaRule.matchyaml while processing group_vars/all.yml (vars): expected a single document in the stream
+but found another document
+  in "<unicode string>", line 2, column 1[0m
+[2mWARNING  Listing 110 violation(s) that are fatal[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/yaml/\yaml[indentation]]8;;\[0m[2m:[0m [31mWrong indentation: expected at least 1[0m
+[35m.pre-commit-config.yaml[0m:3
+[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/yaml/\yaml[indentation]]8;;\[0m[2m:[0m [31mWrong indentation: expected at least 3[0m
+[35m.pre-commit-config.yaml[0m:5
+[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/yaml/\yaml[indentation]]8;;\[0m[2m:[0m [31mWrong indentation: expected at least 3[0m
+[35m.pre-commit-config.yaml[0m:23
+[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/yaml/\yaml[indentation]]8;;\[0m[2m:[0m [31mWrong indentation: expected at least 3[0m
+[35m.pre-commit-config.yaml[0m:30
+[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/yaml/\yaml[indentation]]8;;\[0m[2m:[0m [31mWrong indentation: expected at least 3[0m
+[35m.pre-commit-config.yaml[0m:37
+[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/yaml/\yaml[indentation]]8;;\[0m[2m:[0m [31mWrong indentation: expected at least 1[0m
+[35mgroup_vars/all.yml[0m:15
+[0m
+[33m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/internal-error/\internal-error]8;;\[0m[2m:[0m [33mUnexpected error code 1 from execution of: ansible-playbook --syntax-check -vv playbook.yml[0m [2m[33m(warning)[0m
+[35mplaybook.yml[0m:1 [2mansible-playbook [core 2.18.6]
+  config file = None
+  configured module search path = ['/home/mike/unbound-dns-setup/.ansible/modules', '/home/mike/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /home/mike/.cache/pre-commit/repok5mqlpvj/py_env-python3.13/lib/python3.13/site-packages/ansible
+  ansible collection location = /home/mike/.ansible/collections:/usr/share/ansible/collections:/home/mike/.cache/pre-commit/repok5mqlpvj/py_env-python3.13/lib/python3.13/site-packages
+  executable location = /home/mike/.cache/pre-commit/repok5mqlpvj/py_env-python3.13/bin/ansible-playbook
+  python version = 3.13.5 (main, Jun 11 2025, 15:36:57) [GCC 11.4.0] (/home/mike/.cache/pre-commit/repok5mqlpvj/py_env-python3.13/bin/python)
+  jinja version = 3.1.6
+  libyaml = True
+No config file found; using defaults
+[WARNING]: No inventory was parsed, only implicit localhost is available
+[WARNING]: provided hosts list is empty, only localhost is available. Note that
+the implicit localhost does not match 'all'
+ERROR! AES256 61386365323535373834353366666162313734373338643432646363663362356332383231326662 6430316165313831616235373030613039626632633861310a386535616438353239333938353832 61306333323465353639303466636562663534633735643863373962646465343066353236356637 3139343132653738310a303562383639653464366663383537323065316136623963356365366138 37303931363137663530616533376365613937643737396639663964333239396131336461653932 31323764386464323435306566346636623537336432336363313866343931386439316161396366 37306131633064316130333539656431353830383931333433376165373333613365353336393530 64333263643031376666636163653535383764353466626261346634373438383930316461353732 36383736636333306635326663393039343266663565623165666137366461333733333166376233 37646138663737316335393765336430316533363362663164373334313864313130366263366137 34313562633363356339663566383738343062323034303562633635306533636539623230626466 32383265346130333163363665336330373466383931303263303662356361346163633962653537 38393834313934656236333566353134303661663130346166656262396164373639613739626232 35623137646430366633303865363535666635636333613533306239356434306630306633353365 32646563323536393238626364363963323661663031366137363638396161646639303366393139 37306262653438353261313962666632633338303136306136613833316164643563383338383634 39303337353765616535373233396433376163393639313731616238613364646234393136333466 39386366643265373036623662393330373966333334646138643131303964306263373661373862 33313862323164623235343436393035393735353939386437643661373131373536613737316338 30636662386430643833323332353334356666646563306335326438633464363338323533653431 30646631663161366134313431346333666339643331333862376538666665616665616634643866 31663865383435356634383665656636396163633436653531336536653934333364633938653138 35623936366233353333376631346263336331643334316332623537356363643931613464336432 32643333303238663330316564313835306335396431633134326666626561643234306133346637 36303438376330393731396435333262396662653230656365623565303361373162353935366265 66636663363931363630396666386635643234393334326633333239656633636134353530633636 37653163646362333664663633313062353264613462663133396462386237333234616135326435 39343335346665346637316330653639343839393161323735313334353532393832396533633436 66376464663233393539343931383431643364626364316631623936663331306535316338363564 6239313861326431613632613865623132616361626433616636 cipher could not be found
+[/]
+[0m[0m[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/key-order/\key-order[task]]8;;\[0m[2m:[0m [31mYou can improve the task key order to: name, ansible.builtin.package[0m
+[35mroles/ad_integration/tasks/main.yml[0m:1 [2mTask/Handler: Install Required AD Packages[0m
+[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/yaml/\yaml[document-start]]8;;\[0m[2m:[0m [31mMissing document start "---"[0m
+[35mroles/ad_integration/tasks/main.yml[0m:1
+[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/yaml/\yaml[indentation]]8;;\[0m[2m:[0m [31mWrong indentation: expected 6 but found 4[0m
+[35mroles/ad_integration/tasks/main.yml[0m:3
+[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/key-order/\key-order[task]]8;;\[0m[2m:[0m [31mYou can improve the task key order to: name, ansible.builtin.command, become, changed_when, no_log, register[0m
+[35mroles/ad_integration/tasks/main.yml[0m:13 [2mTask/Handler: Join the AD Domain[0m
+[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/key-order/\key-order[task]]8;;\[0m[2m:[0m [31mYou can improve the task key order to: name, ansible.builtin.template, notify[0m
+[35mroles/ad_integration/tasks/main.yml[0m:20 [2mTask/Handler: Deploy SSSD Configuration[0m
+[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/key-order/\key-order[task]]8;;\[0m[2m:[0m [31mYou can improve the task key order to: name, ansible.builtin.service[0m
+[35mroles/ad_integration/tasks/main.yml[0m:28 [2mTask/Handler: Enable and Start SSSD Service[0m
+[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/key-order/\key-order[task]]8;;\[0m[2m:[0m [31mYou can improve the task key order to: name, ansible.builtin.lineinfile[0m
+[35mroles/ad_integration/tasks/main.yml[0m:33 [2mTask/Handler: Allow AD Admins to Use Sudo[0m
+[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/key-order/\key-order[task]]8;;\[0m[2m:[0m [31mYou can improve the task key order to: name, ansible.builtin.debug[0m
+[35mroles/ad_integration/tasks/main.yml[0m:40 [2mTask/Handler: Print Domain Join Status[0m
+[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/yaml/\yaml[indentation]]8;;\[0m[2m:[0m [31mWrong indentation: expected 6 but found 4[0m
+[35mroles/ad_logging_audit/tasks/install.yml[0m:5
+[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/key-order/\key-order[task]]8;;\[0m[2m:[0m [31mYou can improve the task key order to: name, ansible.builtin.file[0m
+[35mroles/alertmanager/tasks/main.yml[0m:1 [2mTask/Handler: Create Alertmanager Config Directory[0m
+[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/yaml/\yaml[document-start]]8;;\[0m[2m:[0m [31mMissing document start "---"[0m
+[35mroles/alertmanager/tasks/main.yml[0m:1
+[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/key-order/\key-order[task]]8;;\[0m[2m:[0m [31mYou can improve the task key order to: name, ansible.builtin.template, notify[0m
+[35mroles/alertmanager/tasks/main.yml[0m:8 [2mTask/Handler: Deploy Alertmanager Configuration[0m
+[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/key-order/\key-order[task]]8;;\[0m[2m:[0m [31mYou can improve the task key order to: name, community.docker.docker_container, register[0m
+[35mroles/alertmanager/tasks/main.yml[0m:16 [2mTask/Handler: Run Alertmanager Container[0m
+[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/yaml/\yaml[indentation]]8;;\[0m[2m:[0m [31mWrong indentation: expected 6 but found 4[0m
+[35mroles/alertmanager/tasks/main.yml[0m:21
+[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/yaml/\yaml[indentation]]8;;\[0m[2m:[0m [31mWrong indentation: expected 6 but found 4[0m
+[35mroles/alertmanager/tasks/main.yml[0m:25
+[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/key-order/\key-order[task]]8;;\[0m[2m:[0m [31mYou can improve the task key order to: name, ansible.builtin.set_fact, when[0m
+[35mroles/alertmanager/tasks/main.yml[0m:28 [2mTask/Handler: Mark unchanged if no container changed[0m
+[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/key-order/\key-order[task]]8;;\[0m[2m:[0m [31mYou can improve the task key order to: name, ansible.builtin.debug[0m
+[35mroles/alertmanager/tasks/main.yml[0m:32 [2mTask/Handler: Print Alertmanager deployment message[0m
+[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/key-order/\key-order[task]]8;;\[0m[2m:[0m [31mYou can improve the task key order to: name, ansible.builtin.file[0m
+[35mroles/backups/tasks/main.yml[0m:1 [2mTask/Handler: Ensure Backup Directory Exists[0m
+[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/yaml/\yaml[document-start]]8;;\[0m[2m:[0m [31mMissing document start "---"[0m
+[35mroles/backups/tasks/main.yml[0m:1
+[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/key-order/\key-order[task]]8;;\[0m[2m:[0m [31mYou can improve the task key order to: name, ansible.builtin.package[0m
+[35mroles/backups/tasks/main.yml[0m:8 [2mTask/Handler: Install Required Packages[0m
+[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/key-order/\key-order[task]]8;;\[0m[2m:[0m [31mYou can improve the task key order to: name, ansible.builtin.template[0m
+[35mroles/backups/tasks/main.yml[0m:12 [2mTask/Handler: Deploy Backup Script[0m
+[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/key-order/\key-order[task]]8;;\[0m[2m:[0m [31mYou can improve the task key order to: name, ansible.builtin.cron[0m
+[35mroles/backups/tasks/main.yml[0m:17 [2mTask/Handler: Create Cron Job for Nightly Backup[0m
+[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/key-order/\key-order[task]]8;;\[0m[2m:[0m [31mYou can improve the task key order to: name, ansible.builtin.debug[0m
+[35mroles/backups/tasks/main.yml[0m:24 [2mTask/Handler: Print backup setup confirmation[0m
+[0m
+[33m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/load-failure/\load-failure]8;;\[0m[2m:[0m [33mFailed to load or parse file.[0m [2m[33m(warning)[0m
+[35mroles/dns_blocklist/tasks/fetch.yml[0m:1
+[0m[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/yaml/\yaml[document-start]]8;;\[0m[2m:[0m [31mMissing document start "---"[0m
+[35mroles/dns_failover_monitor/tasks/alert.yml[0m:1
+[0m
+[33m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/load-failure/\load-failure]8;;\[0m[2m:[0m [33mFailed to load or parse file.[0m [2m[33m(warning)[0m
+[35mroles/dns_failover_monitor/tasks/check.yml[0m:1
+[0m[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/key-order/\key-order[task]]8;;\[0m[2m:[0m [31mYou can improve the task key order to: name, ansible.builtin.file[0m
+[35mroles/dns_logging/tasks/main.yml[0m:1 [2mTask/Handler: Ensure Log Directory Exists[0m
+[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/yaml/\yaml[document-start]]8;;\[0m[2m:[0m [31mMissing document start "---"[0m
+[35mroles/dns_logging/tasks/main.yml[0m:1
+[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/key-order/\key-order[task]]8;;\[0m[2m:[0m [31mYou can improve the task key order to: name, ansible.builtin.lineinfile, notify[0m
+[35mroles/dns_logging/tasks/main.yml[0m:8 [2mTask/Handler: Configure Unbound for DNS Logging[0m
+[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/key-order/\key-order[task]]8;;\[0m[2m:[0m [31mYou can improve the task key order to: name, ansible.builtin.lineinfile, notify[0m
+[35mroles/dns_logging/tasks/main.yml[0m:16 [2mTask/Handler: Configure Unbound to Log Replies[0m
+[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/key-order/\key-order[task]]8;;\[0m[2m:[0m [31mYou can improve the task key order to: name, ansible.builtin.copy[0m
+[35mroles/dns_logging/tasks/main.yml[0m:24 [2mTask/Handler: Set Log Rotation for Unbound Logs[0m
+[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/key-order/\key-order[task]]8;;\[0m[2m:[0m [31mYou can improve the task key order to: name, ansible.builtin.debug[0m
+[35mroles/dns_logging/tasks/main.yml[0m:31 [2mTask/Handler: Print DNS logging setup message[0m
+[0m
+[33m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/load-failure/\load-failure]8;;\[0m[2m:[0m [33mFailed to load or parse file.[0m [2m[33m(warning)[0m
+[35mroles/dns_query_logging/tasks/configure.yml[0m:1
+[0m[0m
+[33m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/load-failure/\load-failure]8;;\[0m[2m:[0m [33mFailed to load or parse file.[0m [2m[33m(warning)[0m
+[35mroles/dnssec/tasks/configure.yml[0m:1
+[0m[0m
+[33m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/load-failure/\load-failure]8;;\[0m[2m:[0m [33mFailed to load or parse file.[0m [2m[33m(warning)[0m
+[35mroles/dnssec/tasks/install.yml[0m:1
+[0m[0m
+[33m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/load-failure/\load-failure]8;;\[0m[2m:[0m [33mFailed to load or parse file.[0m [2m[33m(warning)[0m
+[35mroles/dot_doh/tasks/configure.yml[0m:1
+[0m[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/key-order/\key-order[task]]8;;\[0m[2m:[0m [31mYou can improve the task key order to: name, ansible.builtin.package[0m
+[35mroles/fail2ban/tasks/main.yml[0m:1 [2mTask/Handler: Install Fail2Ban[0m
+[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/yaml/\yaml[document-start]]8;;\[0m[2m:[0m [31mMissing document start "---"[0m
+[35mroles/fail2ban/tasks/main.yml[0m:1
+[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/key-order/\key-order[task]]8;;\[0m[2m:[0m [31mYou can improve the task key order to: name, ansible.builtin.template, notify[0m
+[35mroles/fail2ban/tasks/main.yml[0m:5 [2mTask/Handler: Deploy Fail2Ban Configuration[0m
+[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/key-order/\key-order[task]]8;;\[0m[2m:[0m [31mYou can improve the task key order to: name, ansible.builtin.service[0m
+[35mroles/fail2ban/tasks/main.yml[0m:13 [2mTask/Handler: Enable and Start Fail2Ban[0m
+[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/key-order/\key-order[task]]8;;\[0m[2m:[0m [31mYou can improve the task key order to: name, ansible.builtin.debug[0m
+[35mroles/fail2ban/tasks/main.yml[0m:18 [2mTask/Handler: Print Fail2Ban setup message[0m
+[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/yaml/\yaml[indentation]]8;;\[0m[2m:[0m [31mWrong indentation: expected at least 3[0m
+[35mroles/firewall/tasks/iptables.yml[0m:34
+[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/yaml/\yaml[indentation]]8;;\[0m[2m:[0m [31mWrong indentation: expected at least 3[0m
+[35mroles/firewall/tasks/iptables.yml[0m:42
+[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/yaml/\yaml[indentation]]8;;\[0m[2m:[0m [31mWrong indentation: expected at least 3[0m
+[35mroles/firewall/tasks/iptables.yml[0m:51
+[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/key-order/\key-order[task]]8;;\[0m[2m:[0m [31mYou can improve the task key order to: name, ansible.builtin.package[0m
+[35mroles/firewall/tasks/main.yml[0m:1 [2mTask/Handler: Install UFW[0m
+[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/yaml/\yaml[document-start]]8;;\[0m[2m:[0m [31mMissing document start "---"[0m
+[35mroles/firewall/tasks/main.yml[0m:1
+[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/key-order/\key-order[task]]8;;\[0m[2m:[0m [31mYou can improve the task key order to: name, community.general.ufw[0m
+[35mroles/firewall/tasks/main.yml[0m:5 [2mTask/Handler: Allow SSH[0m
+[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/key-order/\key-order[task]]8;;\[0m[2m:[0m [31mYou can improve the task key order to: name, community.general.ufw, loop[0m
+[35mroles/firewall/tasks/main.yml[0m:9 [2mTask/Handler: Allow DNS (TCP and UDP)[0m
+[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/yaml/\yaml[indentation]]8;;\[0m[2m:[0m [31mWrong indentation: expected 4 but found 2[0m
+[35mroles/firewall/tasks/main.yml[0m:14
+[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/key-order/\key-order[task]]8;;\[0m[2m:[0m [31mYou can improve the task key order to: name, community.general.ufw, loop[0m
+[35mroles/firewall/tasks/main.yml[0m:17 [2mTask/Handler: Allow Web Interfaces (HTTP, HTTPS, Prometheus, Grafana)[0m
+[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/yaml/\yaml[indentation]]8;;\[0m[2m:[0m [31mWrong indentation: expected 4 but found 2[0m
+[35mroles/firewall/tasks/main.yml[0m:21
+[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/key-order/\key-order[task]]8;;\[0m[2m:[0m [31mYou can improve the task key order to: name, community.general.ufw, loop[0m
+[35mroles/firewall/tasks/main.yml[0m:26 [2mTask/Handler: Allow Internal Access from RFC1918 IP Ranges[0m
+[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/yaml/\yaml[indentation]]8;;\[0m[2m:[0m [31mWrong indentation: expected 4 but found 2[0m
+[35mroles/firewall/tasks/main.yml[0m:30
+[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/key-order/\key-order[task]]8;;\[0m[2m:[0m [31mYou can improve the task key order to: name, community.general.ufw, notify[0m
+[35mroles/firewall/tasks/main.yml[0m:34 [2mTask/Handler: Set Default Incoming Policy to Deny and Enable UFW[0m
+[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/key-order/\key-order[task]]8;;\[0m[2m:[0m [31mYou can improve the task key order to: name, ansible.builtin.command, changed_when, register[0m
+[35mroles/firewall/tasks/main.yml[0m:40 [2mTask/Handler: Print current firewall status[0m
+[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/key-order/\key-order[task]]8;;\[0m[2m:[0m [31mYou can improve the task key order to: name, ansible.builtin.debug[0m
+[35mroles/firewall/tasks/main.yml[0m:44 [2mTask/Handler: Show firewall summary[0m
+[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/yaml/\yaml[indentation]]8;;\[0m[2m:[0m [31mWrong indentation: expected 6 but found 4[0m
+[35mroles/geo_dns/tasks/install.yml[0m:5
+[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/yaml/\yaml[indentation]]8;;\[0m[2m:[0m [31mWrong indentation: expected at least 1[0m
+[35mroles/grafana/files/provisioning/dashboards.yml[0m:5
+[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/yaml/\yaml[indentation]]8;;\[0m[2m:[0m [31mWrong indentation: expected at least 1[0m
+[35mroles/grafana/files/provisioning/datasources.yml[0m:5
+[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/key-order/\key-order[task]]8;;\[0m[2m:[0m [31mYou can improve the task key order to: name, ansible.builtin.file, become, loop[0m
+[35mroles/grafana/tasks/main.yml[0m:1 [2mTask/Handler: Create provisioning directory structure[0m
+[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/yaml/\yaml[document-start]]8;;\[0m[2m:[0m [31mMissing document start "---"[0m
+[35mroles/grafana/tasks/main.yml[0m:1
+[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/yaml/\yaml[indentation]]8;;\[0m[2m:[0m [31mWrong indentation: expected 4 but found 2[0m
+[35mroles/grafana/tasks/main.yml[0m:7
+[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/key-order/\key-order[task]]8;;\[0m[2m:[0m [31mYou can improve the task key order to: name, ansible.builtin.copy, become[0m
+[35mroles/grafana/tasks/main.yml[0m:10 [2mTask/Handler: Copy dashboard provisioning config[0m
+[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/key-order/\key-order[task]]8;;\[0m[2m:[0m [31mYou can improve the task key order to: name, ansible.builtin.copy, become[0m
+[35mroles/grafana/tasks/main.yml[0m:16 [2mTask/Handler: Copy datasource provisioning config[0m
+[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/key-order/\key-order[task]]8;;\[0m[2m:[0m [31mYou can improve the task key order to: name, ansible.builtin.copy, become[0m
+[35mroles/grafana/tasks/main.yml[0m:22 [2mTask/Handler: Copy default dashboard JSON[0m
+[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/yaml/\yaml[indentation]]8;;\[0m[2m:[0m [31mWrong indentation: expected 6 but found 4[0m
+[35mroles/netflow_monitoring/tasks/install.yml[0m:5
+[0m
+[33m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/internal-error/\internal-error]8;;\[0m[2m:[0m [33mUnexpected error code 4 from execution of: ansible-playbook --syntax-check -vv /tmp/playdx63z6_d.yml[0m [2m[33m(warning)[0m
+[35mroles/nginx_proxy[0m:1 [2mansible-playbook [core 2.18.6]
+  config file = None
+  configured module search path = ['/home/mike/unbound-dns-setup/.ansible/modules', '/home/mike/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /home/mike/.cache/pre-commit/repok5mqlpvj/py_env-python3.13/lib/python3.13/site-packages/ansible
+  ansible collection location = /home/mike/.ansible/collections:/usr/share/ansible/collections:/home/mike/.cache/pre-commit/repok5mqlpvj/py_env-python3.13/lib/python3.13/site-packages
+  executable location = /home/mike/.cache/pre-commit/repok5mqlpvj/py_env-python3.13/bin/ansible-playbook
+  python version = 3.13.5 (main, Jun 11 2025, 15:36:57) [GCC 11.4.0] (/home/mike/.cache/pre-commit/repok5mqlpvj/py_env-python3.13/bin/python)
+  jinja version = 3.1.6
+  libyaml = True
+No config file found; using defaults
+[WARNING]: No inventory was parsed, only implicit localhost is available
+[WARNING]: provided hosts list is empty, only localhost is available. Note that
+the implicit localhost does not match 'all'
+ERROR! We were unable to read either as JSON nor YAML, these are the errors we got from each:
+JSON: Expecting value: line 1 column 1 (char 0)
+
+Syntax Error while loading YAML.
+  but found another document. expected a single document in the stream
+but found another document
+  in "<unicode string>", line 2, column 1
+
+The error appears to be in '/home/mike/unbound-dns-setup/roles/nginx_proxy/tasks/main.yml': line 2, column 1, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+---
+---
+^ here
+[/]
+[0m[0m[0m
+[33m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/load-failure/\load-failure]8;;\[0m[2m:[0m [33mFailed to load or parse file.[0m [2m[33m(warning)[0m
+[35mroles/nginx_proxy/tasks/main.yml[0m:1
+[0m[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/key-order/\key-order[task]]8;;\[0m[2m:[0m [31mYou can improve the task key order to: name, ansible.builtin.file, become[0m
+[35mroles/pihole/tasks/main.yml[0m:2 [2mTask/Handler: Ensure Pi-hole config directory exists[0m
+[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/key-order/\key-order[task]]8;;\[0m[2m:[0m [31mYou can improve the task key order to: name, ansible.builtin.template, become, notify[0m
+[35mroles/pihole/tasks/main.yml[0m:8 [2mTask/Handler: Deploy custom host overrides[0m
+[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/key-order/\key-order[task]]8;;\[0m[2m:[0m [31mYou can improve the task key order to: name, become, community.docker.docker_container[0m
+[35mroles/pihole/tasks/main.yml[0m:15 [2mTask/Handler: Run Pi-hole in Docker[0m
+[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/yaml/\yaml[indentation]]8;;\[0m[2m:[0m [31mWrong indentation: expected 6 but found 4[0m
+[35mroles/pihole/tasks/main.yml[0m:23
+[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/yaml/\yaml[indentation]]8;;\[0m[2m:[0m [31mWrong indentation: expected 6 but found 4[0m
+[35mroles/pihole/tasks/main.yml[0m:31
+[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/key-order/\key-order[task]]8;;\[0m[2m:[0m [31mYou can improve the task key order to: name, ansible.builtin.file, become[0m
+[35mroles/prometheus/tasks/main.yml[0m:2 [2mTask/Handler: Create Prometheus configuration directory[0m
+[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/key-order/\key-order[task]]8;;\[0m[2m:[0m [31mYou can improve the task key order to: name, ansible.builtin.template, become, notify[0m
+[35mroles/prometheus/tasks/main.yml[0m:8 [2mTask/Handler: Deploy Prometheus configuration[0m
+[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/key-order/\key-order[task]]8;;\[0m[2m:[0m [31mYou can improve the task key order to: name, become, community.docker.docker_container[0m
+[35mroles/prometheus/tasks/main.yml[0m:15 [2mTask/Handler: Ensure Prometheus is running via Docker[0m
+[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/yaml/\yaml[indentation]]8;;\[0m[2m:[0m [31mWrong indentation: expected 6 but found 4[0m
+[35mroles/prometheus/tasks/main.yml[0m:20
+[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/yaml/\yaml[indentation]]8;;\[0m[2m:[0m [31mWrong indentation: expected 6 but found 4[0m
+[35mroles/prometheus/tasks/main.yml[0m:25
+[0m
+[33m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/load-failure/\load-failure]8;;\[0m[2m:[0m [33mFailed to load or parse file.[0m [2m[33m(warning)[0m
+[35mroles/s3_cloud_backups/tasks/backup.yml[0m:1
+[0m[0m
+[33m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/internal-error/\internal-error]8;;\[0m[2m:[0m [33mUnexpected error code 4 from execution of: ansible-playbook --syntax-check -vv /tmp/playtstlj6fl.yml[0m [2m[33m(warning)[0m
+[35mroles/threatfeeds[0m:1 [2mansible-playbook [core 2.18.6]
+  config file = None
+  configured module search path = ['/home/mike/unbound-dns-setup/.ansible/modules', '/home/mike/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /home/mike/.cache/pre-commit/repok5mqlpvj/py_env-python3.13/lib/python3.13/site-packages/ansible
+  ansible collection location = /home/mike/.ansible/collections:/usr/share/ansible/collections:/home/mike/.cache/pre-commit/repok5mqlpvj/py_env-python3.13/lib/python3.13/site-packages
+  executable location = /home/mike/.cache/pre-commit/repok5mqlpvj/py_env-python3.13/bin/ansible-playbook
+  python version = 3.13.5 (main, Jun 11 2025, 15:36:57) [GCC 11.4.0] (/home/mike/.cache/pre-commit/repok5mqlpvj/py_env-python3.13/bin/python)
+  jinja version = 3.1.6
+  libyaml = True
+No config file found; using defaults
+[WARNING]: No inventory was parsed, only implicit localhost is available
+[WARNING]: provided hosts list is empty, only localhost is available. Note that
+the implicit localhost does not match 'all'
+ERROR! We were unable to read either as JSON nor YAML, these are the errors we got from each:
+JSON: Expecting value: line 1 column 1 (char 0)
+
+Syntax Error while loading YAML.
+  but found another document. expected a single document in the stream
+but found another document
+  in "<unicode string>", line 2, column 1
+
+The error appears to be in '/home/mike/unbound-dns-setup/roles/threatfeeds/tasks/main.yml': line 2, column 1, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+---
+---
+^ here
+[/]
+[0m[0m[0m
+[33m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/load-failure/\load-failure]8;;\[0m[2m:[0m [33mFailed to load or parse file.[0m [2m[33m(warning)[0m
+[35mroles/threatfeeds/tasks/main.yml[0m:1
+[0m[0m
+[33m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/load-failure/\load-failure]8;;\[0m[2m:[0m [33mFailed to load or parse file.[0m [2m[33m(warning)[0m
+[35mroles/tls_reporting/tasks/install.yml[0m:1
+[0m[0m
+[33m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/internal-error/\internal-error]8;;\[0m[2m:[0m [33mUnexpected error code 4 from execution of: ansible-playbook --syntax-check -vv /tmp/play063cdn5d.yml[0m [2m[33m(warning)[0m
+[35mroles/unbound[0m:1 [2mansible-playbook [core 2.18.6]
+  config file = None
+  configured module search path = ['/home/mike/unbound-dns-setup/.ansible/modules', '/home/mike/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /home/mike/.cache/pre-commit/repok5mqlpvj/py_env-python3.13/lib/python3.13/site-packages/ansible
+  ansible collection location = /home/mike/.ansible/collections:/usr/share/ansible/collections:/home/mike/.cache/pre-commit/repok5mqlpvj/py_env-python3.13/lib/python3.13/site-packages
+  executable location = /home/mike/.cache/pre-commit/repok5mqlpvj/py_env-python3.13/bin/ansible-playbook
+  python version = 3.13.5 (main, Jun 11 2025, 15:36:57) [GCC 11.4.0] (/home/mike/.cache/pre-commit/repok5mqlpvj/py_env-python3.13/bin/python)
+  jinja version = 3.1.6
+  libyaml = True
+No config file found; using defaults
+[WARNING]: No inventory was parsed, only implicit localhost is available
+[WARNING]: provided hosts list is empty, only localhost is available. Note that
+the implicit localhost does not match 'all'
+ERROR! We were unable to read either as JSON nor YAML, these are the errors we got from each:
+JSON: Expecting value: line 1 column 1 (char 0)
+
+Syntax Error while loading YAML.
+  but found another document. expected a single document in the stream
+but found another document
+  in "<unicode string>", line 2, column 1
+
+The error appears to be in '/home/mike/unbound-dns-setup/roles/unbound/handlers/main.yml': line 2, column 1, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+---
+---
+^ here
+[/]
+[0m[0m[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/key-order/\key-order[task]]8;;\[0m[2m:[0m [31mYou can improve the task key order to: name, ansible.builtin.file, become, loop[0m
+[35mroles/unbound/tasks/main.yml[0m:2 [2mTask/Handler: Ensure Unbound configuration directories exist[0m
+[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/yaml/\yaml[indentation]]8;;\[0m[2m:[0m [31mWrong indentation: expected 4 but found 2[0m
+[35mroles/unbound/tasks/main.yml[0m:8
+[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/key-order/\key-order[task]]8;;\[0m[2m:[0m [31mYou can improve the task key order to: name, ansible.builtin.get_url, become[0m
+[35mroles/unbound/tasks/main.yml[0m:11 [2mTask/Handler: Copy Unbound root hints[0m
+[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/key-order/\key-order[task]]8;;\[0m[2m:[0m [31mYou can improve the task key order to: name, ansible.builtin.template, become, notify[0m
+[35mroles/unbound/tasks/main.yml[0m:17 [2mTask/Handler: Deploy Unbound configuration[0m
+[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/key-order/\key-order[task]]8;;\[0m[2m:[0m [31mYou can improve the task key order to: name, become, community.docker.docker_container[0m
+[35mroles/unbound/tasks/main.yml[0m:24 [2mTask/Handler: Start Unbound container[0m
+[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/yaml/\yaml[indentation]]8;;\[0m[2m:[0m [31mWrong indentation: expected 6 but found 4[0m
+[35mroles/unbound/tasks/main.yml[0m:29
+[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/yaml/\yaml[indentation]]8;;\[0m[2m:[0m [31mWrong indentation: expected 6 but found 4[0m
+[35mroles/unbound/tasks/main.yml[0m:35
+[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/yaml/\yaml[document-start]]8;;\[0m[2m:[0m [31mMissing document start "---"[0m
+[35mroles/verify/tasks/grafana.yml[0m:1
+[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/yaml/\yaml[indentation]]8;;\[0m[2m:[0m [31mWrong indentation: expected 6 but found 4[0m
+[35mroles/verify/tasks/grafana.yml[0m:10
+[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/key-order/\key-order[task]]8;;\[0m[2m:[0m [31mYou can improve the task key order to: name, ansible.builtin.include_tasks[0m
+[35mroles/verify/tasks/main.yml[0m:2 [2mTask/Handler: Run Fail2ban Verification[0m
+[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/key-order/\key-order[task]]8;;\[0m[2m:[0m [31mYou can improve the task key order to: name, ansible.builtin.include_tasks[0m
+[35mroles/verify/tasks/main.yml[0m:4 [2mTask/Handler: Run Unbound Verification[0m
+[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/key-order/\key-order[task]]8;;\[0m[2m:[0m [31mYou can improve the task key order to: name, ansible.builtin.include_tasks[0m
+[35mroles/verify/tasks/main.yml[0m:6 [2mTask/Handler: Run Pihole Verification[0m
+[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/key-order/\key-order[task]]8;;\[0m[2m:[0m [31mYou can improve the task key order to: name, ansible.builtin.include_tasks[0m
+[35mroles/verify/tasks/main.yml[0m:8 [2mTask/Handler: Run Prometheus Verification[0m
+[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/key-order/\key-order[task]]8;;\[0m[2m:[0m [31mYou can improve the task key order to: name, ansible.builtin.include_tasks[0m
+[35mroles/verify/tasks/main.yml[0m:10 [2mTask/Handler: Run Grafana Verification[0m
+[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/yaml/\yaml[document-start]]8;;\[0m[2m:[0m [31mMissing document start "---"[0m
+[35mroles/verify/tasks/pihole.yml[0m:1
+[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/yaml/\yaml[indentation]]8;;\[0m[2m:[0m [31mWrong indentation: expected 6 but found 4[0m
+[35mroles/verify/tasks/pihole.yml[0m:9
+[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/yaml/\yaml[document-start]]8;;\[0m[2m:[0m [31mMissing document start "---"[0m
+[35mroles/verify/tasks/prometheus.yml[0m:1
+[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/yaml/\yaml[indentation]]8;;\[0m[2m:[0m [31mWrong indentation: expected 6 but found 4[0m
+[35mroles/verify/tasks/prometheus.yml[0m:10
+[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/yaml/\yaml[document-start]]8;;\[0m[2m:[0m [31mMissing document start "---"[0m
+[35mroles/verify/tasks/unbound.yml[0m:1
+[0m
+[31m[34m]8;;https://ansible.readthedocs.io/projects/lint/rules/yaml/\yaml[indentation]]8;;\[0m[2m:[0m [31mWrong indentation: expected 6 but found 4[0m
+[35mroles/verify/tasks/unbound.yml[0m:7
+[0m
+Read [34m]8;;https://ansible.readthedocs.io/projects/lint/configuring/#ignoring-rules-for-entire-files\documentation]8;;\[0m for instructions on how to ignore specific rule violations.
+
+# Rule Violation Summary
+
+  4 [34m]8;;https://ansible.readthedocs.io/projects/lint/rules/\internal-error]8;;\[0m [2mprofile:min tags:core[0m
+ 10 [34m]8;;https://ansible.readthedocs.io/projects/lint/rules/\load-failure]8;;\[0m [2mprofile:min tags:core,unskippable[0m
+ 52 [34m]8;;https://ansible.readthedocs.io/projects/lint/rules/\key-order]8;;\[0m [2mprofile:min tags:formatting[0m
+ 12 [34m]8;;https://ansible.readthedocs.io/projects/lint/rules/\yaml]8;;\[0m [2mprofile:min tags:formatting,yaml[0m
+ 32 [34m]8;;https://ansible.readthedocs.io/projects/lint/rules/\yaml]8;;\[0m [2mprofile:min tags:formatting,yaml[0m
+
+[31m[1mFailed[0m[0m: 110 failure(s), 0 warning(s) on 163 files.
+

@@ -1,42 +1,98 @@
+# Makefile for unbound-dns-setup
+
+# ====== 🦠 CONFIG ======
+VENV_DIR := .venv
+PYTHON := $(VENV_DIR)/bin/python
+PIP := $(VENV_DIR)/bin/pip
+PRE_COMMIT := $(VENV_DIR)/bin/pre-commit
+BLACK := $(VENV_DIR)/bin/black
+
+ANSIBLE_PLAYBOOK := $(VENV_DIR)/bin/ansible-playbook
+ANSIBLE_LINT := $(VENV_DIR)/bin/ansible-lint
+GALAXY := $(VENV_DIR)/bin/ansible-galaxy
+
+REQUIREMENTS_FILE := collections/requirements.yml
+PLAYBOOK_FILE := playbook.yml
+INVENTORY_FILE := inventory.ini
 VAULT_PASS_FILE := .vault_pass.txt
-INVENTORY := inventory.ini
-PLAYBOOK := playbook.yml
-ROLE := myrole
 
-.PHONY: help lint syntax-check run decrypt encrypt molecule test clean
+YAML_FILES := $(shell find . -type f \( -name "*.yml" -o -name "*.yaml" \) ! -path "./.git/*" ! -path "./$(VENV_DIR)/*" ! -path "./collections/*")
 
-help:
-	@echo "Usage:"
-	@echo "  make lint            - Run ansible-lint on playbook and roles"
-	@echo "  make syntax-check    - Run syntax check on the playbook"
-	@echo "  make run             - Run playbook with vault decryption"
-	@echo "  make decrypt         - Decrypt all vault-encrypted files"
-	@echo "  make encrypt         - Encrypt a file with Ansible Vault"
-	@echo "  make molecule        - Run Molecule scenario for $(ROLE)"
-	@echo "  make test            - Run lint, syntax-check, and molecule"
-	@echo "  make clean           - Remove .retry files and cleanup"
+# ====== ⚙️ TARGETS ======
 
-lint:
-	ansible-lint $(PLAYBOOK)
-	ansible-lint roles/
+.PHONY: all init-venv lint lint-fix lint-fix-all install-collections fix-yaml-header fix-yaml-indent format-python pre-commit-install test run clean yaml-fix
 
-syntax-check:
-	ansible-playbook --syntax-check -i $(INVENTORY) --vault-password-file $(VAULT_PASS_FILE) $(PLAYBOOK)
+## 🔧 Set up the local Python virtual environment
+init-venv:
+	@echo "🐍 Setting up Python virtual environment..."
+	@test -d $(VENV_DIR) || python3 -m venv $(VENV_DIR)
+	@$(PIP) install --upgrade pip setuptools wheel
+	@$(PIP) install -r requirements-dev.txt
 
-run:
-	ansible-playbook -i $(INVENTORY) --vault-password-file $(VAULT_PASS_FILE) $(PLAYBOOK)
+## 🔍 Run all checks
+all: init-venv install-collections lint test
 
-decrypt:
-	ansible-vault decrypt --vault-password-file $(VAULT_PASS_FILE) $${FILE}
+## 📆 Install Ansible Galaxy collections
+install-collections:
+	@echo "📦 Installing Ansible collections..."
+	@$(GALAXY) collection install -r $(REQUIREMENTS_FILE)
 
-encrypt:
-	@read -p "Enter filename to encrypt: " FILE; \
-	ansible-vault encrypt --vault-password-file $(VAULT_PASS_FILE) $$FILE
+## ✅ Run ansible-lint
+lint: init-venv
+	@echo "🧚 Running ansible-lint..."
+	@$(ANSIBLE_LINT) --exclude group_vars/all/vault.yml \
+	                 --exclude collections/ansible_collections \
+	                 --exclude .ansible/collections \
+	                 $(PLAYBOOK_FILE)
 
-molecule:
-	cd roles/$(ROLE) && MOLECULE_VAULT_PASSWORD_FILE=../../$(VAULT_PASS_FILE) molecule test
+## ⚡️ Run auto-fix for ansible-lint
+lint-fix: init-venv
+	@$(PRE_COMMIT) run fix-ansible-lint --files $(PLAYBOOK_FILE)
 
-test: lint syntax-check molecule
+## ⚡️ Run all fix tools (yaml headers, indentation, black, lint)
+lint-fix-all: init-venv install-collections yaml-fix format-python
+	@echo "🔧 Running full lint auto-fix..."
+	@$(PRE_COMMIT) run --all-files
 
+## ⚡️ Add missing YAML document headers
+fix-yaml-header:
+	@echo "🔧 Fixing YAML document headers..."
+	@for file in $(YAML_FILES); do \
+		if ! grep -q '^---' $$file; then \
+			echo "Adding --- to $$file"; \
+			sed -i '1s/^/---\n/' $$file; \
+		fi; \
+	done
+
+## 🧄 Fix YAML indentation using ruamel.yaml
+fix-yaml-indent: init-venv
+	@echo "🧼 Fixing YAML indentation..."
+	@bash utils/fix_yaml_indent.sh
+
+## 🧹 Combined YAML fix: header + indentation
+yaml-fix: fix-yaml-header fix-yaml-indent
+
+## 🎨 Format Python files using Black
+format-python: init-venv
+	@echo "🎨 Formatting Python files with Black..."
+	@$(BLACK) utils/
+
+## ⚙️ Install pre-commit hooks
+pre-commit-install: init-venv
+	@echo "🔗 Installing pre-commit hooks..."
+	@$(PRE_COMMIT) install
+
+## ✅ Run Ansible syntax check
+test: init-venv
+	@echo "🔍 Running Ansible syntax check..."
+	@$(ANSIBLE_PLAYBOOK) -i $(INVENTORY_FILE) --syntax-check $(PLAYBOOK_FILE)
+
+## 🚀 Run the full playbook
+run: init-venv
+	@echo "🚀 Running the playbook..."
+	@$(ANSIBLE_PLAYBOOK) -i $(INVENTORY_FILE) $(PLAYBOOK_FILE)
+
+## 🧹 Clean generated and cache files
 clean:
-	find . -name "*.retry" -delete
+	@echo "🧹 Cleaning up..."
+	@rm -rf .retry *.retry .cache __pycache__ .mypy_cache .pytest_cache .tox .ansible-lint .coverage $(VENV_DIR)

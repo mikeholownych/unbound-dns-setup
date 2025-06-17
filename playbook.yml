@@ -1,29 +1,28 @@
----
 - name: DNSStack - Full Infrastructure Deployment (v1.1.0)
   hosts: all
   become: true
   vars_files:
-    - group_vars/all/vault.yml
+  - group_vars/all/vault.yml
 
   pre_tasks:
-    - name: Verify prerequisites and roles
-      ansible.builtin.ansible.builtin.import_role:
-        name: verify
+  - name: Verify prerequisites and roles
+    ansible.builtin.import_role:
+      name: verify
 
   roles:
-    - role: firewall
-    - role: fail2ban
-    - role: ad_integration
-    - role: unbound
-    - role: dnssec              # ✅ Added in v1.1.0
-    - role: dot_doh             # ✅ Added in v1.1.0
-    - role: pihole
-    - role: prometheus
-    - role: grafana
-    - role: alertmanager
-    - role: nginx_proxy
-    - role: backups
-    - role: threatfeeds
-    - role: dns_threat_intel_sync   # ✅ Added in v1.1.0
-    - role: metrics_uptime_check    # ✅ Added in v1.1.0
-    - role: s3_cloud_backups
+  - role: firewall
+  - role: fail2ban
+  - role: ad_integration
+  - role: unbound
+  - role: dnssec                # ✅ Added in v1.1.0
+  - role: dot_doh               # ✅ Added in v1.1.0
+  - role: pihole
+  - role: prometheus
+  - role: grafana
+  - role: alertmanager
+  - role: nginx_proxy
+  - role: backups
+  - role: threatfeeds
+  - role: dns_threat_intel_sync     # ✅ Added in v1.1.0
+  - role: metrics_uptime_check      # ✅ Added in v1.1.0
+  - role: s3_cloud_backups

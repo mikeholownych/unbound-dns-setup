@@ -1,11 +1,9 @@
----
-- name: Copy GeoIP configuration
-  ansible.builtin.template:
-    src: geoip.conf.j2
+- ansible.builtin.template:
     dest: /etc/GeoIP.conf
     mode: '0644'
-
-- name: Run geoipupdate
-  ansible.builtin.command:
+    src: geoip.conf.j2
+  name: Copy GeoIP configuration
+- ansible.builtin.command:
     cmd: geoipupdate
   changed_when: true
+  name: Run geoipupdate

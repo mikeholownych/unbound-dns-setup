@@ -1,31 +1,28 @@
+null
 ---
-- name: Ensure Backup Directory Exists
-  ansible.builtin.file:
-    path: /opt/backups
-    state: directory
-    owner: root
+- ansible.builtin.file:
     group: root
     mode: '0750'
-
-- name: Install Required Packages
-  ansible.builtin.package:
+    owner: root
+    path: /opt/backups
+    state: directory
+  name: Ensure Backup Directory Exists
+- ansible.builtin.package:
     name: rsync
     state: present
-
-- name: Deploy Backup Script
-  ansible.builtin.template:
-    src: backup.sh.j2
+  name: Install Required Packages
+- ansible.builtin.template:
     dest: /usr/local/bin/backup.sh
     mode: '0750'
-
-- name: Create Cron Job for Nightly Backup
-  ansible.builtin.cron:
-    name: "Nightly System Backup"
-    job: "/usr/local/bin/backup.sh"
-    minute: "0"
-    hour: "2"
+    src: backup.sh.j2
+  name: Deploy Backup Script
+- ansible.builtin.cron:
+    hour: '2'
+    job: /usr/local/bin/backup.sh
+    minute: '0'
+    name: Nightly System Backup
     user: root
-
-- name: Print backup setup confirmation
-  ansible.builtin.debug:
-    msg: "✅ Backup system initialized and scheduled at 02:00 daily"
+  name: Create Cron Job for Nightly Backup
+- ansible.builtin.debug:
+    msg: "\u2705 Backup system initialized and scheduled at 02:00 daily"
+  name: Print backup setup confirmation

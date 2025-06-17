@@ -1,28 +1,23 @@
+null
 ---
-- name: Deploy Stubby configuration
-  ansible.builtin.template:
-    src: stubby.yml.j2
+- ansible.builtin.template:
     dest: /etc/stubby/stubby.yml
-    owner: root
     group: root
     mode: '0644'
-
-- name: Enable and start stubby service
-  ansible.builtin.service:
-    name: stubby
+    owner: root
+    src: stubby.yml.j2
+  name: Deploy Stubby configuration
+- ansible.builtin.service:
     enabled: true
+    name: stubby
     state: restarted
-
-- name: Configure Unbound to forward to Stubby
-  ansible.builtin.blockinfile:
+  name: Enable and start stubby service
+- ansible.builtin.blockinfile:
+    block: "forward-zone:\n  name: \".\"\n  forward-addr: 127.0.0.1@8053\n"
+    marker: '# {mark} DoT forward'
     path: /etc/unbound/unbound.conf
-    marker: "# {mark} DoT forward"
-    block: |
-      forward-zone:
-        name: "."
-        forward-addr: 127.0.0.1@8053
-
-- name: Restart Unbound after Stubby setup
-  ansible.builtin.service:
+  name: Configure Unbound to forward to Stubby
+- ansible.builtin.service:
     name: unbound
     state: restarted
+  name: Restart Unbound after Stubby setup

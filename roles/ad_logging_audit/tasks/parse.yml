@@ -1,13 +1,11 @@
----
-- name: Deploy AD log parsing script
-  ansible.builtin.template:
-    src: ad-log-parser.sh.j2
+- ansible.builtin.template:
     dest: /usr/local/bin/ad-log-parser.sh
     mode: '0755'
-
-- name: Setup cronjob for AD log parser
-  ansible.builtin.cron:
-    name: "Parse AD Logs Hourly"
-    job: "/usr/local/bin/ad-log-parser.sh >> /var/log/ad-log-parser.log 2>&1"
-    hour: "*"
-    minute: "0"
+    src: ad-log-parser.sh.j2
+  name: Deploy AD log parsing script
+- ansible.builtin.cron:
+    hour: '*'
+    job: /usr/local/bin/ad-log-parser.sh >> /var/log/ad-log-parser.log 2>&1
+    minute: '0'
+    name: Parse AD Logs Hourly
+  name: Setup cronjob for AD log parser

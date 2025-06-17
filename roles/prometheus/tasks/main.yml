@@ -1,28 +1,25 @@
----
-- name: Create Prometheus configuration directory
-  ansible.builtin.file:
+- ansible.builtin.file:
+    mode: '0755'
     path: /etc/prometheus
     state: directory
-    mode: '0755'
   become: true
-
-- name: Deploy Prometheus configuration
-  ansible.builtin.template:
-    src: prometheus.yml.j2
+  name: Create Prometheus configuration directory
+- ansible.builtin.template:
     dest: /etc/prometheus/prometheus.yml
     mode: '0644'
+    src: prometheus.yml.j2
   become: true
+  name: Deploy Prometheus configuration
   notify: Restart prometheus
-
-- name: Ensure Prometheus is running via Docker
+- become: true
   community.docker.docker_container:
-    name: prometheus
     image: prom/prometheus:latest
-    state: started
-    restart_policy: unless-stopped
-    restart: true
+    name: prometheus
     published_ports:
-      - "9090:9090"
+    - 9090:9090
+    restart: true
+    restart_policy: unless-stopped
+    state: started
     volumes:
-      - /etc/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
-  become: true
+    - /etc/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+  name: Ensure Prometheus is running via Docker

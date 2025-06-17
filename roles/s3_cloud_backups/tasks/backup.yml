@@ -1,12 +1,13 @@
-- name: Upload backup to S3 bucket
-  amazon.aws.s3_object:
-    bucket: "{{ s3_bucket }}"
-    object: "{{ s3_backup_file | basename }}"
-    src: "{{ s3_backup_file }}"
+null
+---
+- amazon.aws.s3_object:
+    bucket: '{{ s3_bucket }}'
     mode: put
+    object: '{{ s3_backup_file | basename }}'
     overwrite: true
+    src: '{{ s3_backup_file }}'
+  name: Upload backup to S3 bucket
   register: s3_upload_result
-
-- name: Show upload result
-  ansible.builtin.debug:
-    msg: "S3 upload result: {{ s3_upload_result }}"
+- ansible.builtin.debug:
+    msg: 'S3 upload result: {{ s3_upload_result }}'
+  name: Show upload result

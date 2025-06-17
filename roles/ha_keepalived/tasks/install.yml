@@ -1,5 +1,4 @@
----
-- name: Install Keepalived for HA
-  ansible.builtin.package:
+- ansible.builtin.package:
     name: keepalived
     state: present
+  name: Install Keepalived for HA

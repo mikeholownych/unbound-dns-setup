@@ -1,0 +1,39 @@
+---
+repos:
+- repo: local
+  hooks:
+  - id: fix-yaml-header
+    name: Add missing YAML document start
+    entry: bash utils/fix_yaml_header.sh
+    language: system
+    types: [yaml]
+    exclude: ^group_vars/all/vault\.yml
+  - id: fix-ansible-lint
+    name: Auto-fix ansible-lint violations
+    entry: >
+      bash -c "ansible-galaxy collection install -r collections/requirements.yml &&
+      python3 utils/fix_ansible_lint.py"
+    language: system
+    types: [yaml]
+    exclude: ^(group_vars/all/vault\.yml|collections/ansible_collections|\.ansible/collections)/
+
+- repo: https://github.com/psf/black
+  rev: 24.3.0
+  hooks:
+  - id: black
+    language_version: python3
+    types: [python]
+
+- repo: https://github.com/adrienverge/yamllint.git
+  rev: v1.32.0
+  hooks:
+  - id: yamllint
+    files: \.(yml|yaml)$
+    exclude: ^(group_vars/all/vault\.yml|collections/ansible_collections|\.ansible/collections)/
+
+- repo: https://github.com/ansible/ansible-lint
+  rev: v25.5.0
+  hooks:
+  - id: ansible-lint
+    files: \.(yml|yaml)$
+    exclude: ^(group_vars/all/vault\.yml|collections/ansible_collections|\.ansible/collections)/

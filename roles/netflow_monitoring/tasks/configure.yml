@@ -1,13 +1,11 @@
----
-- name: Deploy nfcapd systemd unit
-  ansible.builtin.template:
-    src: nfcapd.service.j2
+- ansible.builtin.template:
     dest: /etc/systemd/system/nfcapd.service
     mode: '0644'
-
-- name: Enable and start nfcapd
-  ansible.builtin.systemd:
-    name: nfcapd
-    enabled: true
-    state: started
+    src: nfcapd.service.j2
+  name: Deploy nfcapd systemd unit
+- ansible.builtin.systemd:
     daemon_reload: true
+    enabled: true
+    name: nfcapd
+    state: started
+  name: Enable and start nfcapd

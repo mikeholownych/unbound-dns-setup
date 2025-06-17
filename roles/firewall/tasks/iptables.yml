@@ -1,59 +1,54 @@
-- name: Flush existing iptables rules
-  ansible.builtin.command: iptables -F
-  changed_when: false
+null
+---
+- ansible.builtin.command: iptables -F
   become: true
-
-- name: Set default policies to DROP
-  ansible.builtin.shell: >
-    iptables -P INPUT DROP &&
-    iptables -P FORWARD DROP &&
-    iptables -P OUTPUT ACCEPT
   changed_when: false
-  become: true
+  name: Flush existing iptables rules
+- ansible.builtin.shell: 'iptables -P INPUT DROP && iptables -P FORWARD DROP && iptables
+    -P OUTPUT ACCEPT
 
-- name: Accept loopback traffic
-  ansible.builtin.command: iptables -A INPUT -i lo -j ACCEPT
+    '
+  become: true
   changed_when: false
+  name: Set default policies to DROP
+- ansible.builtin.command: iptables -A INPUT -i lo -j ACCEPT
   become: true
-
-- name: Accept established and related connections
-  ansible.builtin.command: iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
   changed_when: false
+  name: Accept loopback traffic
+- ansible.builtin.command: iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED
+    -j ACCEPT
   become: true
-
-- name: Allow SSH access
-  ansible.builtin.command: iptables -A INPUT -p tcp --dport 22 -j ACCEPT
   changed_when: false
+  name: Accept established and related connections
+- ansible.builtin.command: iptables -A INPUT -p tcp --dport 22 -j ACCEPT
   become: true
-
-- name: Allow DNS TCP/UDP
-  ansible.builtin.command: iptables -A INPUT -p {{ item }} --dport 53 -j ACCEPT
+  changed_when: false
+  name: Allow SSH access
+- ansible.builtin.command: iptables -A INPUT -p {{ item }} --dport 53 -j ACCEPT
+  become: true
   changed_when: false
   loop:
-    - tcp
-    - udp
+  - tcp
+  - udp
+  name: Allow DNS TCP/UDP
+- ansible.builtin.command: iptables -A INPUT -s {{ item }} -j ACCEPT
   become: true
-
-- name: Allow internal subnets (RFC1918)
-  ansible.builtin.command: iptables -A INPUT -s {{ item }} -j ACCEPT
   changed_when: false
   loop:
-    - "10.0.0.0/8"
-    - "172.16.0.0/12"
-    - "192.168.0.0/16"
+  - 10.0.0.0/8
+  - 172.16.0.0/12
+  - 192.168.0.0/16
+  name: Allow internal subnets (RFC1918)
+- ansible.builtin.command: iptables -A INPUT -p tcp --dport {{ item }} -j ACCEPT
   become: true
-
-- name: Allow HTTP/HTTPS/Monitoring
-  ansible.builtin.command: iptables -A INPUT -p tcp --dport {{ item }} -j ACCEPT
   changed_when: false
   loop:
-    - 80
-    - 443
-    - 9090
-    - 3000
+  - 80
+  - 443
+  - 9090
+  - 3000
+  name: Allow HTTP/HTTPS/Monitoring
+- ansible.builtin.command: iptables-save > /etc/iptables/rules.v4
   become: true
-
-- name: Save iptables rules
-  ansible.builtin.command: iptables-save > /etc/iptables/rules.v4
   changed_when: false
-  become: true
+  name: Save iptables rules

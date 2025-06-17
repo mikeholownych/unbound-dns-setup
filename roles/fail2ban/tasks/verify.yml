@@ -1,19 +1,15 @@
----
-- name: Check Fail2Ban Status
-  ansible.builtin.command: fail2ban-client status
+- ansible.builtin.command: fail2ban-client status
+  changed_when: false
+  name: Check Fail2Ban Status
   register: fail2ban_status
+- ansible.builtin.debug:
+    msg: '{{ fail2ban_status.stdout_lines }}'
+  name: Show Fail2Ban status summary
+- ansible.builtin.command: fail2ban-client status sshd
   changed_when: false
-
-- name: Show Fail2Ban status summary
-  ansible.builtin.debug:
-    msg: "{{ fail2ban_status.stdout_lines }}"
-
-- name: Check SSH Jail Status
-  ansible.builtin.command: fail2ban-client status sshd
+  failed_when: '''sshd'' not in sshd_jail_status.stdout'
+  name: Check SSH Jail Status
   register: sshd_jail_status
-  changed_when: false
-  failed_when: "'sshd' not in sshd_jail_status.stdout"
-
-- name: Show SSH Jail Details
-  ansible.builtin.debug:
-    msg: "{{ sshd_jail_status.stdout_lines }}"
+- ansible.builtin.debug:
+    msg: '{{ sshd_jail_status.stdout_lines }}'
+  name: Show SSH Jail Details

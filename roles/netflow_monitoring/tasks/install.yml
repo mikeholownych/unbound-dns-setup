@@ -1,7 +1,6 @@
----
-- name: Install flow-tools and nfdump
-  ansible.builtin.package:
+- ansible.builtin.package:
     name:
-      - flow-tools
-      - nfdump
+    - flow-tools
+    - nfdump
     state: present
+  name: Install flow-tools and nfdump

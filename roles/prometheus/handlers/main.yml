@@ -1,7 +1,6 @@
----
-- name: Restart prometheus
+- become: true
   community.docker.docker_container:
     name: prometheus
-    state: started
     restart: true
-  become: true
+    state: started
+  name: Restart prometheus

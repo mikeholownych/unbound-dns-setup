@@ -1,6 +1,5 @@
----
-- name: Copy audit report to shared directory
-  ansible.builtin.copy:
-    src: /tmp/cis-scan-report.xml
+- ansible.builtin.copy:
     dest: /var/www/html/reports/cis-scan-report.xml
     mode: '0644'
+    src: /tmp/cis-scan-report.xml
+  name: Copy audit report to shared directory

@@ -8,6 +8,8 @@ inventory.yaml
 inventory.ini~
 .vagrant/
 *.swp
+.ansible/collections
+.cache
 
 # Vault files (encrypted)
 vault.yml
@@ -15,6 +17,7 @@ vault_*.yml
 *.vault
 secrets/
 .vault_pass.txt
+group_vars/all/vault.yml
 
 # Roles and playbooks
 roles/**/files/
@@ -57,3 +60,5 @@ desktop.ini
 # Ignore generated files
 CHANGELOG.md
 release_notes.md
+.vault_pass.txt
+*.retry

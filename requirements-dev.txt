@@ -1,0 +1,7 @@
+# requirements-dev.txt
+ansible-lint
+ruamel.yaml
+black
+pre-commit
+yamllint
+poetry

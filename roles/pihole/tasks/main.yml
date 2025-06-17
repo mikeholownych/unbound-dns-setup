@@ -1,35 +1,32 @@
----
-- name: Ensure Pi-hole config directory exists
-  ansible.builtin.file:
+- ansible.builtin.file:
+    mode: '0755'
     path: /etc/pihole
     state: directory
-    mode: '0755'
   become: true
-
-- name: Deploy custom host overrides
-  ansible.builtin.template:
-    src: pihole-custom.list.j2
+  name: Ensure Pi-hole config directory exists
+- ansible.builtin.template:
     dest: /etc/pihole/custom.list
     mode: '0644'
+    src: pihole-custom.list.j2
   become: true
+  name: Deploy custom host overrides
   notify: Restart pihole
-
-- name: Run Pi-hole in Docker
+- become: true
   community.docker.docker_container:
-    name: pihole
-    image: pihole/pihole:latest
-    state: started
-    restart_policy: unless-stopped
-    restart: true
     env:
-      TZ: "{{ ansible_date_time.tz }}"
-      WEBPASSWORD: "{{ vault_pihole_password }}"
+      TZ: '{{ ansible_date_time.tz }}'
+      WEBPASSWORD: '{{ vault_pihole_password }}'
+    image: pihole/pihole:latest
+    name: pihole
     published_ports:
-      - "53:53/udp"
-      - "53:53/tcp"
-      - "80:80"
-      - "443:443"
+    - 53:53/udp
+    - 53:53/tcp
+    - 80:80
+    - 443:443
+    restart: true
+    restart_policy: unless-stopped
+    state: started
     volumes:
-      - /etc/pihole:/etc/pihole
-      - /etc/dnsmasq.d:/etc/dnsmasq.d
-  become: true
+    - /etc/pihole:/etc/pihole
+    - /etc/dnsmasq.d:/etc/dnsmasq.d
+  name: Run Pi-hole in Docker

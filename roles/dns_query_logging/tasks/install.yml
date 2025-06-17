@@ -1,5 +1,4 @@
----
-- name: Install rsyslog if not present
-  ansible.builtin.package:
+- ansible.builtin.package:
     name: rsyslog
     state: present
+  name: Install rsyslog if not present

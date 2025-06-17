@@ -1,13 +1,11 @@
----
-- name: Ensure required packages are installed for AD log auditing
-  ansible.builtin.package:
+- ansible.builtin.package:
     name:
-      - auditd
-      - audispd-plugins
+    - auditd
+    - audispd-plugins
     state: present
-
-- name: Enable and start auditd
-  ansible.builtin.service:
-    name: auditd
+  name: Ensure required packages are installed for AD log auditing
+- ansible.builtin.service:
     enabled: true
+    name: auditd
     state: started
+  name: Enable and start auditd

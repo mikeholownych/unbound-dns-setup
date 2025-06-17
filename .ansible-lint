@@ -1,0 +1,10 @@
+---
+exclude_paths:
+  - .ansible/collections/ansible_collections
+  - collections/ansible_collections
+  - .git
+  - .cache
+  - .venv
+  - .tox
+  - .github
+  - group_vars/all/vault.yml

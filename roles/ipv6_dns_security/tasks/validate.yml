@@ -1,6 +1,5 @@
----
-- name: Validate Unbound IPv6 config
-  ansible.builtin.shell: unbound-checkconf
+- ansible.builtin.shell: unbound-checkconf
   args:
     executable: /bin/bash
   changed_when: false
+  name: Validate Unbound IPv6 config

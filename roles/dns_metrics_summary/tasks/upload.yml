@@ -1,6 +1,7 @@
+null
 ---
-- name: Upload DNS summary to monitoring host
-  ansible.builtin.copy:
-    content: "{{ dns_summary_file['content'] | b64decode }}"
-    dest: "/var/www/html/dns-summary.txt"
+- ansible.builtin.copy:
+    content: '{{ dns_summary_file[''content''] | b64decode }}'
+    dest: /var/www/html/dns-summary.txt
     mode: '0644'
+  name: Upload DNS summary to monitoring host

@@ -1,41 +1,37 @@
----
-- name: Ensure Unbound configuration directories exist
-  ansible.builtin.file:
-    path: "{{ item }}"
-    state: directory
+- ansible.builtin.file:
     mode: '0755'
-  loop:
-    - /etc/unbound
-    - /etc/unbound/threatfeeds
+    path: '{{ item }}'
+    state: directory
   become: true
-
-- name: Copy Unbound root hints
-  ansible.builtin.get_url:
-    url: https://www.internic.net/domain/named.cache
+  loop:
+  - /etc/unbound
+  - /etc/unbound/threatfeeds
+  name: Ensure Unbound configuration directories exist
+- ansible.builtin.get_url:
     dest: /etc/unbound/root.hints
     mode: '0644'
+    url: https://www.internic.net/domain/named.cache
   become: true
-
-- name: Deploy Unbound configuration
-  ansible.builtin.template:
-    src: unbound.conf.j2
+  name: Copy Unbound root hints
+- ansible.builtin.template:
     dest: /etc/unbound/unbound.conf
     mode: '0644'
+    src: unbound.conf.j2
   become: true
+  name: Deploy Unbound configuration
   notify: Restart unbound
-
-- name: Start Unbound container
+- become: true
   community.docker.docker_container:
-    name: unbound
     image: mvance/unbound:latest
-    state: started
-    restart_policy: unless-stopped
-    restart: true
+    name: unbound
     published_ports:
-      - "53:53/udp"
-      - "53:53/tcp"
+    - 53:53/udp
+    - 53:53/tcp
+    restart: true
+    restart_policy: unless-stopped
+    state: started
     volumes:
-      - /etc/unbound/unbound.conf:/opt/unbound/etc/unbound/unbound.conf:ro
-      - /etc/unbound/threatfeeds:/opt/unbound/etc/unbound/threatfeeds:ro
-      - /etc/unbound/root.hints:/opt/unbound/etc/unbound/root.hints:ro
-  become: true
+    - /etc/unbound/unbound.conf:/opt/unbound/etc/unbound/unbound.conf:ro
+    - /etc/unbound/threatfeeds:/opt/unbound/etc/unbound/threatfeeds:ro
+    - /etc/unbound/root.hints:/opt/unbound/etc/unbound/root.hints:ro
+  name: Start Unbound container

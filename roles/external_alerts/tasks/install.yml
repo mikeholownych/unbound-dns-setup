@@ -1,5 +1,4 @@
----
-- name: Ensure curl is installed
-  ansible.builtin.package:
+- ansible.builtin.package:
     name: curl
     state: present
+  name: Ensure curl is installed

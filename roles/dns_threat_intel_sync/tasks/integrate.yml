@@ -1,12 +1,11 @@
-- name: Deploy threat intel config to unbound
-  ansible.builtin.template:
-    src: intel-list.conf.j2
+- ansible.builtin.template:
     dest: /etc/unbound/unbound.conf.d/intel-list.conf
     mode: '0644'
+    src: intel-list.conf.j2
+  name: Deploy threat intel config to unbound
   notify: Reload unbound
-
-- name: Deploy threat intel sync script
-  ansible.builtin.template:
-    src: sync-threat-intel.sh.j2
+- ansible.builtin.template:
     dest: /usr/local/bin/sync-threat-intel.sh
     mode: '0755'
+    src: sync-threat-intel.sh.j2
+  name: Deploy threat intel sync script

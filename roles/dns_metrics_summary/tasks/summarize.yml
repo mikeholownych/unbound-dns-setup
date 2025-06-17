@@ -1,13 +1,12 @@
----
-- name: Generate DNS query volume summary
-  ansible.builtin.shell: |
-    set -o pipefail
-    grep -i query /var/log/unbound/unbound.log | awk '{print $5}' | sort | uniq -c | sort -nr > /tmp/dns-query-summary.txt
+- ansible.builtin.shell: 'set -o pipefail grep -i query /var/log/unbound/unbound.log
+    | awk ''{print $5}'' | sort | uniq -c | sort -nr > /tmp/dns-query-summary.txt
+
+    '
   args:
     executable: /bin/bash
   changed_when: false
-
-- name: Load summary into template var
-  ansible.builtin.slurp:
+  name: Generate DNS query volume summary
+- ansible.builtin.slurp:
     src: /tmp/dns-query-summary.txt
+  name: Load summary into template var
   register: dns_summary_file

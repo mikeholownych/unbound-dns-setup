@@ -1,30 +1,29 @@
-- name: Create provisioning directory structure
-  ansible.builtin.file:
-    path: "/etc/grafana/provisioning/{{ item }}"
-    state: directory
+null
+---
+- ansible.builtin.file:
     mode: '0755'
+    path: /etc/grafana/provisioning/{{ item }}
+    state: directory
+  become: true
   loop:
-    - dashboards
-    - datasources
-  become: true
-
-- name: Copy dashboard provisioning config
-  ansible.builtin.copy:
-    src: "provisioning/dashboards.yml"
-    dest: "/etc/grafana/provisioning/dashboards/dashboards.yml"
+  - dashboards
+  - datasources
+  name: Create provisioning directory structure
+- ansible.builtin.copy:
+    dest: /etc/grafana/provisioning/dashboards/dashboards.yml
     mode: '0644'
+    src: provisioning/dashboards.yml
   become: true
-
-- name: Copy datasource provisioning config
-  ansible.builtin.copy:
-    src: "provisioning/datasources.yml"
-    dest: "/etc/grafana/provisioning/datasources/datasources.yml"
+  name: Copy dashboard provisioning config
+- ansible.builtin.copy:
+    dest: /etc/grafana/provisioning/datasources/datasources.yml
     mode: '0644'
+    src: provisioning/datasources.yml
   become: true
-
-- name: Copy default dashboard JSON
-  ansible.builtin.copy:
-    src: "dashboards/default.json"
-    dest: "/etc/grafana/provisioning/dashboards/default.json"
+  name: Copy datasource provisioning config
+- ansible.builtin.copy:
+    dest: /etc/grafana/provisioning/dashboards/default.json
     mode: '0644'
+    src: dashboards/default.json
   become: true
+  name: Copy default dashboard JSON

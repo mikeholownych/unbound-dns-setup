@@ -1,7 +1,6 @@
----
-- name: Install GeoIP tools and libraries
-  ansible.builtin.package:
+- ansible.builtin.package:
     name:
-      - geoipupdate
-      - libmaxminddb0
+    - geoipupdate
+    - libmaxminddb0
     state: present
+  name: Install GeoIP tools and libraries

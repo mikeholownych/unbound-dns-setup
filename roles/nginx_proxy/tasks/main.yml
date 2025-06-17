@@ -1,36 +1,35 @@
-- name: Ensure nginx config directory exists
-  ansible.builtin.file:
+null
+---
+- ansible.builtin.file:
+    mode: '0755'
     path: /etc/nginx/conf.d
     state: directory
-    mode: '0755'
   become: true
-
-- name: Deploy proxy configuration
-  ansible.builtin.template:
-    src: proxy.conf.j2
+  name: Ensure nginx config directory exists
+- ansible.builtin.template:
     dest: /etc/nginx/conf.d/proxy.conf
     mode: '0644'
+    src: proxy.conf.j2
   become: true
+  name: Deploy proxy configuration
   notify: Restart nginx-proxy
-
-- name: Ensure nginx-proxy container is running with mounted config
+- become: true
   community.docker.docker_container:
-    name: nginx-proxy
-    image: jwilder/nginx-proxy:alpine
-    state: started
-    restart_policy: unless-stopped
-    published_ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - /var/run/docker.sock:/tmp/docker.sock:ro
-      - /etc/nginx/conf.d:/etc/nginx/conf.d:ro
-      - /etc/nginx/certs
-      - /etc/nginx/vhost.d
     env:
-      ENABLE_IPV6: "true"
-  become: true
-
-- name: Display NGINX Proxy container status
-  ansible.builtin.debug:
-    msg: "NGINX reverse proxy running on ports 80 and 443 with custom proxy.conf"
+      ENABLE_IPV6: 'true'
+    image: jwilder/nginx-proxy:alpine
+    name: nginx-proxy
+    published_ports:
+    - 80:80
+    - 443:443
+    restart_policy: unless-stopped
+    state: started
+    volumes:
+    - /var/run/docker.sock:/tmp/docker.sock:ro
+    - /etc/nginx/conf.d:/etc/nginx/conf.d:ro
+    - /etc/nginx/certs
+    - /etc/nginx/vhost.d
+  name: Ensure nginx-proxy container is running with mounted config
+- ansible.builtin.debug:
+    msg: NGINX reverse proxy running on ports 80 and 443 with custom proxy.conf
+  name: Display NGINX Proxy container status

@@ -1,6 +1,4 @@
-# roles/s3_cloud_backups/tasks/install.yml
----
-- name: Ensure AWS CLI is installed
-  ansible.builtin.package:
+- ansible.builtin.package:
     name: awscli
     state: present
+  name: Ensure AWS CLI is installed

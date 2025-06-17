@@ -1,5 +1,6 @@
+null
 ---
-- name: Install TLS reporting dependencies
-  ansible.builtin.package:
+- ansible.builtin.package:
     name: postfix
     state: present
+  name: Install TLS reporting dependencies

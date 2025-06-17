@@ -1,6 +1,5 @@
----
-- name: Deploy TLS reporting config
-  ansible.builtin.template:
-    src: tlsrpt.conf.j2
+- ansible.builtin.template:
     dest: /etc/postfix/tlsrpt.conf
     mode: '0644'
+    src: tlsrpt.conf.j2
+  name: Deploy TLS reporting config

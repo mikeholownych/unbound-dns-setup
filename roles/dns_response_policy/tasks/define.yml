@@ -1,6 +1,5 @@
----
-- name: Define response policy zone
-  ansible.builtin.template:
-    src: rpz.zone.j2
+- ansible.builtin.template:
     dest: /etc/unbound/rpz.zone
     mode: '0644'
+    src: rpz.zone.j2
+  name: Define response policy zone

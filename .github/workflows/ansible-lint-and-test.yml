@@ -1,16 +1,18 @@
+---
+---
 name: Ansible CI - Lint and Test
 
 on:
   push:
     paths:
-      - '**.yml'
-      - '**.yaml'
-      - 'roles/**'
+    - '**.yml'
+    - '**.yaml'
+    - 'roles/**'
   pull_request:
     paths:
-      - '**.yml'
-      - '**.yaml'
-      - 'roles/**'
+    - '**.yml'
+    - '**.yaml'
+    - 'roles/**'
 
 jobs:
   lint-and-test:
@@ -18,39 +20,39 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+    - name: Checkout repository
+      uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
 
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install ansible ansible-lint molecule[docker] yamllint
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install ansible ansible-lint molecule[docker] yamllint
 
-      - name: Create Ansible Vault password file
-        run: echo "${{ secrets.ANSIBLE_VAULT_PASSWORD }}" > .vault_pass.txt
+    - name: Create Ansible Vault password file
+      run: echo "${{ secrets.ANSIBLE_VAULT_PASSWORD }}" > .vault_pass.txt
 
-      - name: Set Vault env variable
-        run: echo "ANSIBLE_VAULT_PASSWORD_FILE=$PWD/.vault_pass.txt" >> $GITHUB_ENV
+    - name: Set Vault env variable
+      run: echo "ANSIBLE_VAULT_PASSWORD_FILE=$PWD/.vault_pass.txt" >> $GITHUB_ENV
 
-      - name: Create inventory file
-        run: |
-          echo "[local]" > inventory.ini
-          echo "localhost ansible_connection=local" >> inventory.ini
+    - name: Create inventory file
+      run: |
+        echo "[local]" > inventory.ini
+        echo "localhost ansible_connection=local" >> inventory.ini
 
-      - name: Run Ansible Lint on playbook and roles
-        run: |
-          ansible-lint playbook.yml
-          ansible-lint roles/
+    - name: Run Ansible Lint on playbook and roles
+      run: |
+        ansible-lint playbook.yml
+        ansible-lint roles/
 
-      - name: Run Molecule tests (if defined)
-        run: |
-          if [ -f molecule/default/molecule.yml ]; then
-            molecule test
-          else
-            echo "No Molecule scenario found. Skipping test."
-          fi
+    - name: Run Molecule tests (if defined)
+      run: |
+        if [ -f molecule/default/molecule.yml ]; then
+          molecule test
+        else
+          echo "No Molecule scenario found. Skipping test."
+        fi
