@@ -1,4 +1,5 @@
 null
+--- null
 ---
 - ansible.builtin.template:
     dest: /etc/rsyslog.d/50-dns.conf

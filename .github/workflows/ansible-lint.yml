@@ -1,27 +1,29 @@
 ---
+null
+--- null
 ---
 name: Ansible Lint
 
 on:
   push:
     paths:
-    - '**.yml'
-    - '**.yaml'
-    - '**/Makefile'
-    - '**/.ansible-lint'
+      - '**.yml'
+      - '**.yaml'
+      - '**/Makefile'
+      - '**/.ansible-lint'
 
 jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
-    - name: Set up Python
-      uses: actions/setup-python@v5
-      with:
-        python-version: '3.11'
-    - name: Install dependencies
-      run: |
-        pip install ansible ansible-lint
-        ansible-galaxy collection install -r collections/requirements.yml
-    - name: Run ansible-lint
-      run: ansible-lint playbook.yml
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: |
+          pip install ansible ansible-lint
+          ansible-galaxy collection install -r collections/requirements.yml
+      - name: Run ansible-lint
+        run: ansible-lint playbook.yml

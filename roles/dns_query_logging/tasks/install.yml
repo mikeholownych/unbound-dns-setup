@@ -1,3 +1,5 @@
+null
+---
 - ansible.builtin.package:
     name: rsyslog
     state: present

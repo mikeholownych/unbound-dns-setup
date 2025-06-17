@@ -8,3 +8,6 @@ exclude_paths:
   - .tox
   - .github
   - group_vars/all/vault.yml
+
+skip_list:
+  - key-order

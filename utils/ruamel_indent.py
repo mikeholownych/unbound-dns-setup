@@ -11,6 +11,7 @@ yaml.indent(mapping=2, sequence=4, offset=2)
 yaml.preserve_quotes = True
 yaml.width = 4096  # Allow long lines to avoid unnecessary wrapping
 
+
 def fix_yaml_indentation(filepath: Path):
     try:
         with filepath.open("r", encoding="utf-8") as f:
@@ -29,6 +30,7 @@ def fix_yaml_indentation(filepath: Path):
     except Exception as e:
         print(f"❌ Failed to write {filepath}: {e}")
 
+
 def main():
     if len(sys.argv) < 2:
         print("Usage: ruamel_indent.py <file1.yml> [file2.yaml] ...")
@@ -40,6 +42,7 @@ def main():
             print(f"⚠️ Skipping non-file: {path}")
             continue
         fix_yaml_indentation(path)
+
 
 if __name__ == "__main__":
     main()

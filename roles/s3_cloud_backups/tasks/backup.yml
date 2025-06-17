@@ -1,4 +1,5 @@
 null
+--- null
 ---
 - amazon.aws.s3_object:
     bucket: '{{ s3_bucket }}'

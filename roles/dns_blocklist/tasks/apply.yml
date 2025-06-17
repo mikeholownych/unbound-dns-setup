@@ -1,3 +1,5 @@
+null
+---
 - ansible.builtin.template:
     dest: /etc/unbound/unbound-blocklist.conf
     group: root

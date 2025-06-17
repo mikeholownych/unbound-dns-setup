@@ -1,20 +1,27 @@
-#!/usr/bin/env bash
-set -euo pipefail
+#!/bin/bash
+
+set -e
+
+VENV_DIR=".venv"
+PYTHON="$VENV_DIR/bin/python3"
+SCRIPT="utils/ruamel_indent.py"
 
 echo "🧼 Fixing YAML indentation using ruamel.yaml..."
-YAML_FORMATTER="$(dirname "$0")/../$(VENV_DIR)/bin/python3 utils/ruamel_indent.py"
 
-if [[ ! -x "$YAML_FORMATTER" ]]; then
-  echo "❌ Formatter script not found: $YAML_FORMATTER"
+if [ ! -f "$PYTHON" ]; then
+  echo "❌ Python virtual environment not found at $PYTHON"
   exit 1
 fi
 
-mapfile -t files < <(find . -type f \( -name "*.yml" -o -name "*.yaml" \) \
-  ! -path "./.git/*" \
-  ! -path "./$(VENV_DIR)/*" \
-  ! -path "./collections/*" \
-  ! -path "./.ansible/*")
+if [ ! -f "$SCRIPT" ]; then
+  echo "❌ Formatter script not found: $SCRIPT"
+  exit 1
+fi
 
-[[ ${#files[@]} -eq 0 ]] && { echo "⚠️ No YAML files found."; exit 0; }
+# Find all YAML files to format
+YAML_FILES=$(find . -type f \( -name "*.yml" -o -name "*.yaml" \) ! -path "./.venv/*")
 
-"$YAML_FORMATTER" "${files[@]}"
+# Run the script on each file
+for file in $YAML_FILES; do
+  "$PYTHON" "$SCRIPT" "$file"
+done
